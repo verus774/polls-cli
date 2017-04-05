@@ -7,7 +7,7 @@ import {AuthService} from './auth/auth.service';
 })
 export class AppComponent {
   public options = {
-    timeOut: 5000,
+    timeOut: 1000,
   };
 
   constructor(private _authService: AuthService) {
