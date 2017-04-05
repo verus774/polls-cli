@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header text-center">
+      <h3>{{ poll.title }}</h3>
+    </div>
+
+    <button type="button" class="btn btn-warning" (click)="onBack()">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+    </button>
+    <br><br>
+
+    <div>
+      <p>
+        <strong>Description</strong>: {{ poll.description }}
+        <br>
+      </p>
+
+      <p>
+        <strong>Created</strong>: {{ poll.createdAt | date:'dd.MM.yyyy' }}
+        <br>
+        <strong>Updated</strong>: {{ poll.updatedAt | date:'dd.MM.yyyy' }}
+      </p>
+
+      <h4 class="text-center">Questions</h4>
+
+      <div *ngFor="let question of poll.questions">
+        <p><strong>Question #}</strong>: {{ question.text }}</p>
+        <ul>
+          <li *ngFor="let choice of question.choices">
+            {{ choice }}
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </div>
+
+  </div>
+</div>
