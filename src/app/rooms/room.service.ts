@@ -5,7 +5,7 @@ import {IRoom} from './room';
 
 @Injectable()
 export class RoomService {
-  private _roomUrl = 'http://polls2.herokuapp.com/api/v1/rooms';
+  private _roomUrl = 'https://polls2.herokuapp.com/api/v1/rooms';
 
   constructor(private _http: Http) {
   }

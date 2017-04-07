@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PollService {
-  private _apiUrl = 'http://polls2.herokuapp.com/api/v1/polls';
+  private _apiUrl = 'https://polls2.herokuapp.com/api/v1/polls';
 
   constructor(private _http: Http) {
   }

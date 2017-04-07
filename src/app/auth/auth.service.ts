@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
-  private _authUrl = 'http://polls2.herokuapp.com/auth';
+  private _authUrl = 'https://polls2.herokuapp.com/auth';
 
   constructor(private _http: Http) {
   }

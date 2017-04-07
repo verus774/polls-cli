@@ -1,21 +1,23 @@
 export interface IPoll {
-  _id: string;
+  _id?: string;
   title: string;
   description?: string;
-  active: boolean;
+  category: string;
+  active?: boolean;
   questions: {
-    _id: string;
+    _id?: string;
     text: string;
     choices: string[];
   }[];
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 const a: IPoll = {
   _id: '',
   title: '',
   description: '',
+  category: '',
   active: true,
   questions: [
     {

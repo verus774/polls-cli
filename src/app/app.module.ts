@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
@@ -18,6 +18,7 @@ import {PollAddComponent} from './polls/poll-add.component';
 import {PollDetailComponent} from './polls/poll-detail.component';
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NavigationComponent} from './navigation.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PollDetailComponent,
     PollAddComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     SimpleNotificationsModule.forRoot(),
     routing

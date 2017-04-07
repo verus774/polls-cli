@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">
+        <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+        Student polls
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/signup">Signup</a></li>
+        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/polls">Polls</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="authService.isLoggedIn()"><a routerLink="/login">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
