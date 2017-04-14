@@ -23,8 +23,8 @@
 
       <h4 class="text-center">Questions</h4>
 
-      <div *ngFor="let question of poll.questions">
-        <p><strong>Question #}</strong>: {{ question.text }}</p>
+      <div *ngFor="let question of poll.questions; let i=index">
+        <p><strong>Question #{{i+1}}</strong>: {{ question.text }}</p>
         <ul>
           <li *ngFor="let choice of question.choices">
             {{ choice }}
