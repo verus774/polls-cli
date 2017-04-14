@@ -35,6 +35,12 @@ export class PollService {
       .catch(this.handleError);
   }
 
+  update(poll: IPoll): Observable<IPoll> {
+    return this._http.put(`${this._apiUrl}/${poll._id}`, poll)
+      .map((response: Response) => <IPoll> response.json().data)
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error);
     // return Observable.throw(error.json().error || 'Server error');
