@@ -17,8 +17,9 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {PollAddComponent} from './polls/poll-add.component';
 import {PollDetailComponent} from './polls/poll-detail.component';
 import {SimpleNotificationsModule} from 'angular2-notifications';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavigationComponent} from './navigation.component';
+import {ModalModule} from 'angular2-modal';
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import {NavigationComponent} from './navigation.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     SimpleNotificationsModule.forRoot(),
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     routing
   ],
   providers: [

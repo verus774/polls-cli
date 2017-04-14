@@ -17,7 +17,9 @@
         <br>
         <label for="question-{{i}}">Question {{i + 1}}</label>
 
-        <button type="button" class="btn btn-danger pull-right" (click)="removeQuestion(i)">
+        <button type="button" class="btn btn-danger pull-right"
+                (click)="removeQuestion(i)"
+                [disabled]="poll.questions.length < 2">
           Remove question
         </button>
         <br><br>
@@ -39,10 +41,12 @@
                      class="form-control"
                      [(ngModel)]="question.choices[j]">
               <span class="input-group-btn">
-                        <button class="btn btn-danger" type="button" title="Remove choice" (click)="removeChoice(i, j)">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;
-                        </button>
-                    </span>
+                <button class="btn btn-danger" type="button" title="Remove choice"
+                        (click)="removeChoice(i, j)"
+                        [disabled]="question.choices.length < 3">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;
+                </button>
+              </span>
             </div>
           </div>
         </div>
@@ -66,7 +70,5 @@
     </div>
 
   </form>
-
-  <pre>{{ poll | json }}</pre>
 
 </div>
