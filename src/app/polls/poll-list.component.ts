@@ -4,7 +4,8 @@ import {PollService} from './poll.service';
 import {NotificationsService} from 'angular2-notifications';
 import {Overlay} from 'angular2-modal';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
-
+import {AuthService} from '../auth/auth.service';
+import {SocketService} from '../shared/socket.service';
 
 @Component({
   templateUrl: 'poll-list.component.html',
@@ -13,22 +14,58 @@ import {Modal} from 'angular2-modal/plugins/bootstrap';
 
 export class PollListComponent implements OnInit {
   polls: IPoll[];
+  activePoll: IPoll;
 
   constructor(private _pollService: PollService,
               public modal: Modal,
-              vcRef: ViewContainerRef,
-              overlay: Overlay,
-              private _notificationsService: NotificationsService) {
+              public vcRef: ViewContainerRef,
+              public overlay: Overlay,
+              private _notificationsService: NotificationsService,
+              private _authService: AuthService,
+              private _socket: SocketService) {
     overlay.defaultViewContainer = vcRef;
   }
 
   ngOnInit(): void {
     this.getPolls();
+
+    this._socket.on('startPoll').subscribe((data) => {
+      this.activePoll = data;
+
+      for (const poll of this.polls) {
+        if (data._id === poll._id) {
+          poll.active = true;
+        }
+      }
+    });
+
+    this._socket.on('stopPoll').subscribe((data) => {
+      this.activePoll = null;
+
+      for (const poll of this.polls) {
+        if (data._id === poll._id) {
+          poll.active = false;
+        }
+      }
+    });
+
+    this._socket.on('error').subscribe(() => {
+      this._notificationsService.error('Error', 'Fail');
+    });
+
   }
 
   getPolls(): void {
     this._pollService.getAll().subscribe(
-      polls => this.polls = polls,
+      polls => {
+        this.polls = polls;
+        for (const poll of polls) {
+          if (poll.active === true) {
+            this.activePoll = poll;
+          }
+        }
+        this._socket.emit('joinRoom', this._authService.getUser()._id);
+      },
       error => console.log(error)
     );
 
@@ -54,4 +91,13 @@ export class PollListComponent implements OnInit {
           });
       });
   }
+
+  startPoll(id: string): void {
+    this._socket.emit('startPoll', {access_token: this._authService.getToken(), id: id});
+  }
+
+  stopPoll(id: string): void {
+    this._socket.emit('stopPoll', {access_token: this._authService.getToken(), id: id});
+  }
+
 }

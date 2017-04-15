@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {tokenNotExpired} from 'angular2-jwt';
+import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -10,6 +10,8 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AuthService {
   private _authUrl = 'https://polls2.herokuapp.com/auth';
+  jwtHelper: JwtHelper = new JwtHelper();
+
 
   constructor(private _http: Http) {
   }
@@ -48,6 +50,10 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return tokenNotExpired(null, this.getToken());
+  }
+
+  getUser(): any {
+    return this.jwtHelper.decodeToken(this.getToken());
   }
 
   private handleError(error: Response) {

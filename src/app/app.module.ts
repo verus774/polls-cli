@@ -20,6 +20,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
 import {NavigationComponent} from './navigation.component';
 import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
+import {SocketService} from './shared/socket.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
     PollService,
     AuthService,
     AuthGuard,
+    SocketService,
     // { provide: Http, useClass: HttpInterceptor },
     requestOptionsProvider,
   ],

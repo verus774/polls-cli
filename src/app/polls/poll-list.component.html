@@ -7,7 +7,22 @@
     <h4>{{ polls ? 'Total: '+ polls.length : 'No polls' }}</h4>
 
     <a routerLink="/add-poll" class="btn btn-success pull-right">Add poll</a>
-    <br>
+
+  </div>
+</div>
+
+<div class="row" ng-show="vm.polls">
+  <div class="col-md-3">
+    <hr>
+    <h4 *ngIf="!activePoll">No active polls</h4>
+    <div *ngIf="activePoll">
+      <h5>Result for {{activePoll.title}}</h5>
+      <button class="btn btn-primary" (click)="stopPoll(activePoll._id)">Stop poll</button>
+    </div>
+
+  </div>
+  <div class="col-md-9">
+
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
@@ -17,20 +32,24 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let poll of polls">
+        <tr *ngFor="let poll of polls" [ngClass]="{'list-group-item-success': poll.active}">
           <td><a [routerLink]="['/polls', poll._id]">{{ poll.title }}</a></td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-success" title="Start" disabled>
+              <button class="btn btn-success" title="Start" (click)="startPoll(poll._id)"
+                      [disabled]="activePoll">
                 <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               </button>
-              <button class="btn btn-primary" title="Stop" disabled>
+              <button class="btn btn-primary" title="Stop" (click)="stopPoll(poll._id)"
+                      [disabled]="!poll.active">
                 <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-warning" title="Edit" [routerLink]="['/edit-poll', poll._id]">
+              <a class="btn btn-warning" title="Edit" [routerLink]="['/edit-poll', poll._id]"
+                 [ngClass]="{'disabled': activePoll}">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button class="btn btn-danger" title="Remove" (click)="removePoll(poll._id)">
+              <button class="btn btn-danger" title="Remove" (click)="removePoll(poll._id)"
+                      [disabled]="activePoll">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
             </div>
