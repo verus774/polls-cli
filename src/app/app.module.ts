@@ -12,7 +12,6 @@ import {LoginComponent} from './auth/login.component';
 import {AuthService} from './auth/auth.service';
 import {PollListComponent} from './polls/poll-list.component';
 import {PollService} from './polls/poll.service';
-import {requestOptionsProvider} from './shared/default-request-options';
 import {AuthGuard} from './auth/auth-guard.service';
 import {PollAddComponent} from './polls/poll-add.component';
 import {PollDetailComponent} from './polls/poll-detail.component';
@@ -21,6 +20,7 @@ import {NavigationComponent} from './navigation.component';
 import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SocketService} from './shared/socket.service';
+import {HttpInterceptor} from './shared/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -49,8 +49,7 @@ import {SocketService} from './shared/socket.service';
     AuthService,
     AuthGuard,
     SocketService,
-    // { provide: Http, useClass: HttpInterceptor },
-    requestOptionsProvider,
+    HttpInterceptor
   ],
   bootstrap: [AppComponent]
 })

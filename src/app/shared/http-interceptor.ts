@@ -6,7 +6,7 @@ import 'rxjs/add/observable/throw';
 
 
 @Injectable()
-export class HttpInterceptor extends Http {
+class MyHttpInterceptor extends Http {
 
   constructor(backend: XHRBackend, options: RequestOptions) {
     const token = localStorage.getItem('access_token');
@@ -16,25 +16,21 @@ export class HttpInterceptor extends Http {
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     const token = localStorage.getItem('access_token');
-    if (typeof url === 'string') { // meaning we have to add the token to the options, not in url
+    if (typeof url === 'string') {
       if (!options) {
-        // let's make option object
         options = {headers: new Headers()};
       }
       options.headers.set('Authorization', token);
     } else {
-      // we have to add the token to the url object
       url.headers.set('Authorization', token);
     }
     return super.request(url, options).catch(this.catchAuthError(this));
   }
 
-  private catchAuthError(self: HttpInterceptor) {
-    // we have to pass HttpService's own instance here as `self`
+  private catchAuthError(self: MyHttpInterceptor) {
     return (res: Response) => {
       console.log(res);
       if (res.status === 401 || res.status === 403) {
-        // if not authenticated
         console.log(res);
       }
       return Observable.throw(res);
@@ -42,3 +38,5 @@ export class HttpInterceptor extends Http {
   }
 
 }
+
+export const HttpInterceptor = {provide: Http, useClass: MyHttpInterceptor};
