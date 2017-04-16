@@ -16,6 +16,14 @@ export class RoomService {
       .catch(this.handleError);
   }
 
+  setCurrentRoom(room: IRoom): void {
+    localStorage.setItem('currentRoom', JSON.stringify(room));
+  }
+
+  getCurrentRoom(): IRoom {
+    return JSON.parse(localStorage.getItem('currentRoom'));
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error);
   }

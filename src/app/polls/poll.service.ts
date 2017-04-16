@@ -23,6 +23,12 @@ export class PollService {
       .catch(this.handleError);
   }
 
+  getActive(roomId: string): Observable<IPoll> {
+    return this._http.get(`https://polls2.herokuapp.com/api/v1/active-poll?room=${roomId}`)
+      .map((response: Response) => <IPoll> response.json().data)
+      .catch(this.handleError);
+  }
+
   remove(id: string): Observable<any> {
     return this._http.delete(`${this._apiUrl}/${id}`)
       .map((response: Response) => <any> response.json().data)

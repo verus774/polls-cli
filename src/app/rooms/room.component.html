@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="page-header">
+      <h3>Room: [ {{ currentRoom.name }} ]</h3>
+    </div>
+
+    <button type="button" class="btn btn-warning" (click)="onBack()">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Leave room
+    </button>
+
+    <div *ngIf="activePoll">
+      <h4>{{ activePoll.title }}</h4>
+      <form role="form" name="answerForm">
+        <div class="panel panel-primary" *ngFor="let question of activePoll.questions">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ question.text }}
+            </h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group" *ngFor="let choice of question.choices">
+              <li class="list-group-item">
+                <div class="radio">
+                  <label>
+                    <input type="radio">{{ choice }}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</div>

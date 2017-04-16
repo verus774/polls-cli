@@ -13,7 +13,9 @@ export class PollDetailComponent implements OnInit {
   // TODO
   poll: any = {};
 
-  constructor(private _pollService: PollService, private _activatedRoute: ActivatedRoute, private _router: Router) {
+  constructor(private _pollService: PollService,
+              private _activatedRoute: ActivatedRoute,
+              private _router: Router) {
     this.id = _activatedRoute.snapshot.params['id'];
   }
 

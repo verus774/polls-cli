@@ -14,7 +14,8 @@
       <tr *ngFor="let room of rooms">
         <td>{{ room.name }}</td>
         <td>
-          <a href="#" class="btn btn-success">Enter</a>
+          <!--<a class="btn btn-success" [routerLink]="['/rooms', room._id]">Enter</a>-->
+          <button class="btn btn-success" (click)="joinRoom(room)">Enter</button>
         </td>
       </tr>
       </tbody>

@@ -21,11 +21,13 @@ import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SocketService} from './shared/socket.service';
 import {HttpInterceptor} from './shared/http-interceptor';
+import {RoomComponent} from './rooms/room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomListComponent,
+    RoomComponent,
     PollListComponent,
     PollDetailComponent,
     PollAddComponent,
