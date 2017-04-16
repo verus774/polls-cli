@@ -6,7 +6,7 @@ import 'rxjs/add/observable/throw';
 
 
 @Injectable()
-class MyHttpInterceptor extends Http {
+export class MyHttpInterceptor extends Http {
 
   constructor(backend: XHRBackend, options: RequestOptions) {
     const token = localStorage.getItem('access_token');
