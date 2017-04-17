@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {RoomService} from './room.service';
 import {IRoom} from './room';
 import {SocketService} from '../shared/socket.service';
 import {IPoll} from '../polls/poll';
 import {PollService} from '../polls/poll.service';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class RoomComponent implements OnInit {
   currentRoom: IRoom;
   activePoll: IPoll;
 
-  constructor(private _router: Router,
+  constructor(private _location: Location,
               private _roomService: RoomService,
               private _socket: SocketService,
               private _pollService: PollService) {
@@ -41,7 +41,7 @@ export class RoomComponent implements OnInit {
 
   onBack(): void {
     this._socket.emit('leaveRoom', this.currentRoom._id);
-    this._router.navigate(['/rooms']);
+    this._location.back();
   }
 
 }

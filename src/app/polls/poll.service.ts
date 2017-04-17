@@ -24,7 +24,7 @@ export class PollService {
   }
 
   getActive(roomId: string): Observable<IPoll> {
-    return this._http.get(`https://polls2.herokuapp.com/api/v1/active-poll?room=${roomId}`)
+    return this._http.get(`https://polls2.herokuapp.com/api/v1/active-poll`, {params: {room: roomId}})
       .map((response: Response) => <IPoll> response.json().data)
       .catch(this.handleError);
   }
