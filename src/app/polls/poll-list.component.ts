@@ -4,7 +4,7 @@ import {PollService} from './poll.service';
 import {NotificationsService} from 'angular2-notifications';
 import {Overlay} from 'angular2-modal';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
-import {AuthService} from '../auth/auth.service';
+import {AuthService} from '../shared/auth/auth.service';
 import {SocketService} from '../shared/socket.service';
 
 @Component({

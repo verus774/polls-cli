@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PollService} from './poll.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
@@ -9,7 +9,7 @@ import {Location} from '@angular/common';
   templateUrl: 'poll-detail.component.html'
 })
 
-export class PollDetailComponent implements OnInit, OnDestroy {
+export class PollDetailComponent implements OnInit {
   private id: string;
   private sub: Subscription;
 
@@ -19,27 +19,11 @@ export class PollDetailComponent implements OnInit, OnDestroy {
   constructor(private _pollService: PollService,
               private _route: ActivatedRoute,
               private _location: Location) {
-    this.id = _route.snapshot.params['id'];
   }
 
   ngOnInit(): void {
-    this.getPoll(this.id);
-
-    /*this.sub = this._route.params.subscribe(
-     params => this.getPoll(params['id'])
-     );*/
-
-    /*const id = this._route.snapshot.paramMap.get('id');
-     this.getPoll(id);*/
-
-    /*this._route.paramMap
-     .map((params: ParamMap) => params.get('id'))
-     .switchMap(id => this._pollService.get(id))
-     .subscribe(poll => this.poll = poll);*/
-  }
-
-  ngOnDestroy() {
-    // this.sub.unsubscribe();
+    const id = this._route.snapshot.paramMap.get('id');
+    this.getPoll(id);
   }
 
   getPoll(id: string): void {

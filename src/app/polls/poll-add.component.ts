@@ -20,9 +20,8 @@ export class PollAddComponent implements OnInit {
 
   constructor(private _pollService: PollService,
               private _router: Router,
-              private _activatedRoute: ActivatedRoute,
+              private _route: ActivatedRoute,
               private _notificationsService: NotificationsService) {
-    this.id = _activatedRoute.snapshot.params['id'];
   }
 
   addQuestion(): void {
@@ -68,6 +67,8 @@ export class PollAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this._route.snapshot.paramMap.get('id');
+
     if (this.id) {
       this._pollService.get(this.id)
         .subscribe(
