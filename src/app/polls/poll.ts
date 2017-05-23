@@ -1,8 +1,9 @@
+import {ICategory} from '../categories/category';
 export interface IPoll {
   _id?: string;
   title: string;
   description?: string;
-  category: string;
+  category: ICategory;
   active?: boolean;
   questions: {
     _id?: string;
@@ -17,7 +18,9 @@ const a: IPoll = {
   _id: '',
   title: '',
   description: '',
-  category: '',
+  category: {
+    _id: ''
+  },
   active: true,
   questions: [
     {

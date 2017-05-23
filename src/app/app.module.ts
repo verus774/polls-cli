@@ -16,6 +16,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {PollModule} from './polls/poll.module';
 import {RoomModule} from './rooms/room.module';
 import {AuthModule} from './auth/auth.module';
+import {CategoryModule} from './categories/category.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import {AuthModule} from './auth/auth.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     ModalModule.forRoot(),
     BootstrapModalModule,
     AuthModule,
     RoomModule,
+    CategoryModule,
     PollModule,
     AppRoutingModule
   ],

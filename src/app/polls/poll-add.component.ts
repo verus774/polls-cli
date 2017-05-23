@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PollService} from './poll.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
+import {CategoryService} from '../categories/category.service';
+import {ICategory} from '../categories/category';
 
 
 @Component({
@@ -12,13 +14,17 @@ export class PollAddComponent implements OnInit {
   id: string;
   poll: any = {
     title: '',
-    category: '586fdc6e32a6341844ec1036',
+    category: {
+      _id: ''
+    },
     questions: [
       {text: '', choices: ['', '']}
     ]
   };
+  categories: ICategory[];
 
   constructor(private _pollService: PollService,
+              private _categoryService: CategoryService,
               private _router: Router,
               private _route: ActivatedRoute,
               private _notificationsService: NotificationsService) {
@@ -67,15 +73,29 @@ export class PollAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this._route.snapshot.paramMap.get('id');
+    this.getCategories();
 
+    this.id = this._route.snapshot.paramMap.get('id');
     if (this.id) {
-      this._pollService.get(this.id)
-        .subscribe(
-          poll => this.poll = poll,
-          error => console.log(error)
-        );
+      this.getPoll(this.id);
     }
+  }
+
+  private getCategories(): void {
+    this._categoryService.getAll().subscribe(
+      categories => {
+        this.categories = categories;
+      }
+    );
+  }
+
+  private getPoll(id: string): void {
+    this._pollService.get(id)
+      .subscribe(
+        poll => {
+          this.poll = poll;
+        }
+      );
   }
 
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PollService} from './poll.service';
 import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
 import {Location} from '@angular/common';
 
 
@@ -10,10 +9,6 @@ import {Location} from '@angular/common';
 })
 
 export class PollDetailComponent implements OnInit {
-  private id: string;
-  private sub: Subscription;
-
-  // TODO
   poll: any = {};
 
   constructor(private _pollService: PollService,
@@ -26,10 +21,9 @@ export class PollDetailComponent implements OnInit {
     this.getPoll(id);
   }
 
-  getPoll(id: string): void {
+  private getPoll(id: string): void {
     this._pollService.get(id).subscribe(
-      poll => this.poll = poll,
-      error => console.log(error)
+      poll => this.poll = poll
     );
   }
 

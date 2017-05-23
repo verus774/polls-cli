@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="page-header text-center">
+      <h3>{{ id ? 'Update' : 'Add' }} category</h3>
+    </div>
+
+    <form #addCategoryForm="ngForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control" [(ngModel)]="category.title">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <input type="text" id="description" name="description" class="form-control" [(ngModel)]="category.description">
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Save
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
