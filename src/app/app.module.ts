@@ -18,6 +18,7 @@ import {RoomModule} from './rooms/room.module';
 import {AuthModule} from './auth/auth.module';
 import {CategoryModule} from './categories/category.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ResultModule} from './results/result.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     RoomModule,
     CategoryModule,
     PollModule,
+    ResultModule,
     AppRoutingModule
   ],
   providers: [
