@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Overlay} from 'angular2-modal';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
 import {IResult} from './result';
@@ -16,9 +15,7 @@ export class ResultListComponent implements OnInit {
   constructor(private _resultService: ResultService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
-              public overlay: Overlay,
               private _notificationsService: NotificationsService) {
-    overlay.defaultViewContainer = vcRef;
   }
 
   ngOnInit(): void {

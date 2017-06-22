@@ -2,7 +2,6 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {IPoll} from './poll';
 import {PollService} from './poll.service';
 import {NotificationsService} from 'angular2-notifications';
-import {Overlay} from 'angular2-modal';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {AuthService} from '../shared/auth/auth.service';
 import {SocketService} from '../shared/socket.service';
@@ -20,11 +19,9 @@ export class PollListComponent implements OnInit {
   constructor(private _pollService: PollService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
-              public overlay: Overlay,
               private _notificationsService: NotificationsService,
               private _authService: AuthService,
               private _socket: SocketService) {
-    overlay.defaultViewContainer = vcRef;
   }
 
   ngOnInit(): void {

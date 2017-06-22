@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {CategoryService} from './category.service';
 import {ICategory} from './category';
-import {Overlay} from 'angular2-modal';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
 
@@ -16,9 +15,7 @@ export class CategoryListComponent implements OnInit {
   constructor(private _categoryService: CategoryService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
-              public overlay: Overlay,
               private _notificationsService: NotificationsService) {
-    overlay.defaultViewContainer = vcRef;
   }
 
   ngOnInit(): void {
