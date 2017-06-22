@@ -18,6 +18,9 @@
     <div *ngIf="activePoll; else noPolls">
       <h5>Result for {{activePoll.title}}</h5>
       <button class="btn btn-primary" (click)="stopPoll(activePoll._id)">Stop poll</button>
+
+      <pre>{{ answers | json }}</pre>
+
     </div>
 
     <ng-template #noPolls><h4>No active polls</h4></ng-template>

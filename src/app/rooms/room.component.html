@@ -10,7 +10,7 @@
 
     <div *ngIf="activePoll">
       <h4>{{ activePoll.title }}</h4>
-      <form role="form" name="answerForm">
+      <form role="form" name="answerForm" (submit)="onSubmit()">
         <div class="panel panel-primary" *ngFor="let question of activePoll.questions">
           <div class="panel-heading">
             <h3 class="panel-title">
@@ -18,11 +18,15 @@
             </h3>
           </div>
           <div class="panel-body">
-            <ul class="list-group" *ngFor="let choice of question.choices">
+            <ul class="list-group" *ngFor="let choice of question.choices; let j=index; trackBy: trackByFn">
               <li class="list-group-item">
                 <div class="radio">
                   <label>
-                    <input type="radio">{{ choice }}
+                    <input type="radio"
+                           name="{{question._id}}"
+                           value="{{j}}"
+                           [(ngModel)]="question.answer">
+                    {{ choice }}
                   </label>
                 </div>
               </li>

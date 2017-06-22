@@ -15,6 +15,7 @@ import {SocketService} from '../shared/socket.service';
 export class PollListComponent implements OnInit {
   polls: IPoll[];
   activePoll: IPoll;
+  answers: any[] = [];
 
   constructor(private _pollService: PollService,
               public modal: Modal,
@@ -46,6 +47,12 @@ export class PollListComponent implements OnInit {
         if (data._id === poll._id) {
           poll.active = false;
         }
+      }
+    });
+
+    this._socket.on('answers').subscribe((data) => {
+      for (const answer of data.answers) {
+        this.answers.push(answer);
       }
     });
 

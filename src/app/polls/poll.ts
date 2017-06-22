@@ -7,6 +7,7 @@ export interface IPoll {
   active?: boolean;
   questions: {
     _id?: string;
+    answer?: string;
     text: string;
     choices: string[];
   }[];

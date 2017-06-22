@@ -44,4 +44,19 @@ export class RoomComponent implements OnInit {
     this._location.back();
   }
 
+  onSubmit(): void {
+    const answers = {answers: []};
+
+    for (const question of this.activePoll.questions) {
+      answers.answers.push({id: question._id, answer: question.answer});
+    }
+
+    this._socket.emit('answers', answers);
+
+  }
+
+  trackByFn(index, item) {
+    return index;
+  }
+
 }
