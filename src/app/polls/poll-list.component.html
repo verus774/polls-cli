@@ -49,7 +49,7 @@
                       [disabled]="!poll.active">
                 <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-warning" title="Edit" [routerLink]="['/edit-poll', poll._id]"
+              <a class="btn btn-warning" title="Edit" [routerLink]="[poll._id, 'edit']"
                  [ngClass]="{'disabled': activePoll}">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>

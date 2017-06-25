@@ -4,6 +4,7 @@ import {ResultListComponent} from './result-list.component';
 import {ResultRoutingModule} from './result-routing.module';
 import {ResultService} from './result.service';
 import {ResultDetailComponent} from './result-detail.component';
+import {ResultResolver} from './result-resolver.service';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {ResultDetailComponent} from './result-detail.component';
     ResultDetailComponent
   ],
   providers: [
-    ResultService
+    ResultService,
+    ResultResolver
   ]
 })
 

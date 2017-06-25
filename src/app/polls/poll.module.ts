@@ -6,6 +6,7 @@ import {PollAddComponent} from './poll-add.component';
 import {PollService} from './poll.service';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {PollResolver} from './poll-resolver.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     PollAddComponent
   ],
   providers: [
-    PollService
+    PollService,
+    PollResolver
   ]
 })
 
