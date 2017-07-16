@@ -3,8 +3,8 @@ import {RoomService} from './room.service';
 import {IRoom} from './room';
 import {SocketService} from '../shared/socket.service';
 import {IPoll} from '../polls/poll';
-import {PollService} from '../polls/poll.service';
 import {Location} from '@angular/common';
+import {ApiService} from '../shared/api.service';
 
 
 @Component({
@@ -18,17 +18,14 @@ export class RoomComponent implements OnInit {
   constructor(private _location: Location,
               private _roomService: RoomService,
               private _socket: SocketService,
-              private _pollService: PollService) {
+              private _api: ApiService) {
   }
 
   ngOnInit(): void {
     this.currentRoom = this._roomService.getCurrentRoom();
 
-    this._pollService.getActive(this.currentRoom._id)
-      .subscribe(
-        activePoll => this.activePoll = activePoll,
-        error => console.log(error)
-      );
+    this._api.get(`active-poll?room=${this.currentRoom._id}`)
+      .subscribe(activePoll => this.activePoll = activePoll);
 
     this._socket.on('startPoll').subscribe((data) => {
       this.activePoll = data;

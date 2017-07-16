@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {IPoll} from './poll';
-import {PollService} from './poll.service';
 import {NotificationsService} from 'angular2-notifications';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {AuthService} from '../shared/auth/auth.service';
 import {SocketService} from '../shared/socket.service';
+import {ApiService} from '../shared/api.service';
 
 @Component({
   templateUrl: 'poll-list.component.html',
@@ -16,7 +16,7 @@ export class PollListComponent implements OnInit {
   activePoll: IPoll;
   answers: any[] = [];
 
-  constructor(private _pollService: PollService,
+  constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService,
@@ -60,18 +60,16 @@ export class PollListComponent implements OnInit {
   }
 
   getPolls(): void {
-    this._pollService.getAll().subscribe(
-      polls => {
+    this._api.get('polls').subscribe(polls => {
         this.polls = polls;
+
         for (const poll of polls) {
           if (poll.active === true) {
             this.activePoll = poll;
           }
         }
         this._socket.emit('joinRoom', this._authService.getUser()._id);
-      },
-      error => console.log(error)
-    );
+    });
 
   }
 
@@ -85,7 +83,7 @@ export class PollListComponent implements OnInit {
       .then((res) => {
         res.result
           .then(() => {
-            this._pollService.remove(id).subscribe(
+            this._api.delete(`polls/${id}`).subscribe(
               () => {
                 this._notificationsService.success('Polls', 'Poll deleted');
                 this.getPolls();

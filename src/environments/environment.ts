@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://polls2.herokuapp.com/api/v1',
+  authUrl: 'https://polls2.herokuapp.com/auth'
 };

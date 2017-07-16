@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {CategoryService} from './category.service';
 import {ICategory} from './category';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
+import {ApiService} from '../shared/api.service';
 
 @Component({
   templateUrl: 'category-list.component.html',
@@ -12,7 +12,7 @@ import {NotificationsService} from 'angular2-notifications';
 export class CategoryListComponent implements OnInit {
   categories: ICategory[];
 
-  constructor(private _categoryService: CategoryService,
+  constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService) {
@@ -23,9 +23,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   private getCategories(): void {
-    this._categoryService.getAll().subscribe(
-      categories => this.categories = categories
-    );
+    this._api.get('categories').subscribe(categories => this.categories = categories);
   }
 
   removeCategory(id: string): void {
@@ -38,7 +36,7 @@ export class CategoryListComponent implements OnInit {
       .then((res) => {
         res.result
           .then(() => {
-            this._categoryService.remove(id).subscribe(
+            this._api.delete(`categories/${id}`).subscribe(
               () => {
                 this._notificationsService.success('Categories', 'Category deleted');
                 this.getCategories();

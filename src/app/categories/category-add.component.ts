@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
-import {CategoryService} from './category.service';
+import {ApiService} from '../shared/api.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class CategoryAddComponent implements OnInit {
     description: ''
   };
 
-  constructor(private _categoryService: CategoryService,
+  constructor(private _api: ApiService,
               private _router: Router,
               private _route: ActivatedRoute,
               private _notificationsService: NotificationsService) {
@@ -23,7 +23,7 @@ export class CategoryAddComponent implements OnInit {
 
   onSubmit(): void {
     if (this.id) {
-      this._categoryService.update(this.category).subscribe(
+      this._api.put(`categories/${this.id}`, this.category).subscribe(
         () => {
           this._router.navigate(['/categories']);
           this._notificationsService.success('Categories', 'Category updated');
@@ -31,7 +31,7 @@ export class CategoryAddComponent implements OnInit {
         () => this._notificationsService.error('Error', 'Fail')
       );
     } else {
-      this._categoryService.add(this.category).subscribe(
+      this._api.post('categories', this.category).subscribe(
         () => {
           this._router.navigate(['/categories']);
           this._notificationsService.success('Categories', 'Category added');
@@ -45,10 +45,7 @@ export class CategoryAddComponent implements OnInit {
     this.id = this._route.snapshot.paramMap.get('id');
 
     if (this.id) {
-      this._categoryService.get(this.id)
-        .subscribe(
-          category => this.category = category
-        );
+      this._api.get(`categories/${this.id}`).subscribe(category => this.category = category);
     }
   }
 

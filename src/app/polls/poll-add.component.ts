@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PollService} from './poll.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
-import {CategoryService} from '../categories/category.service';
 import {ICategory} from '../categories/category';
+import {ApiService} from '../shared/api.service';
 
 
 @Component({
@@ -23,8 +22,7 @@ export class PollAddComponent implements OnInit {
   };
   categories: ICategory[];
 
-  constructor(private _pollService: PollService,
-              private _categoryService: CategoryService,
+  constructor(private _api: ApiService,
               private _router: Router,
               private _route: ActivatedRoute,
               private _notificationsService: NotificationsService) {
@@ -54,7 +52,7 @@ export class PollAddComponent implements OnInit {
 
   onSubmit(): void {
     if (this.id) {
-      this._pollService.update(this.poll).subscribe(
+      this._api.put(`polls/${this.id}`, this.poll).subscribe(
         () => {
           this._router.navigate(['/polls']);
           this._notificationsService.success('Polls', 'Poll updated');
@@ -62,7 +60,7 @@ export class PollAddComponent implements OnInit {
         () => this._notificationsService.error('Error', 'Fail')
       );
     } else {
-      this._pollService.add(this.poll).subscribe(
+      this._api.post('polls', this.poll).subscribe(
         () => {
           this._router.navigate(['/polls']);
           this._notificationsService.success('Polls', 'Poll added');
@@ -77,25 +75,11 @@ export class PollAddComponent implements OnInit {
 
     this.id = this._route.snapshot.paramMap.get('id');
     if (this.id) {
-      this.getPoll(this.id);
+      this._api.get(`polls/${this.id}`).subscribe(poll => this.poll = poll);
     }
   }
 
   private getCategories(): void {
-    this._categoryService.getAll().subscribe(
-      categories => {
-        this.categories = categories;
-      }
-    );
+    this._api.get('categories').subscribe(categories => this.categories = categories);
   }
-
-  private getPoll(id: string): void {
-    this._pollService.get(id)
-      .subscribe(
-        poll => {
-          this.poll = poll;
-        }
-      );
-  }
-
 }

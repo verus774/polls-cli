@@ -29,10 +29,6 @@ export class MyHttpInterceptor extends Http {
 
   private catchAuthError(self: MyHttpInterceptor) {
     return (res: Response) => {
-      console.log(res);
-      if (res.status === 401 || res.status === 403) {
-        console.log(res);
-      }
       return Observable.throw(res);
     };
   }

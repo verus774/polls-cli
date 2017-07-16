@@ -2,7 +2,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
 import {IResult} from './result';
-import {ResultService} from './result.service';
+import {ApiService} from '../shared/api.service';
 
 @Component({
   templateUrl: 'result-list.component.html',
@@ -12,7 +12,7 @@ import {ResultService} from './result.service';
 export class ResultListComponent implements OnInit {
   results: IResult[];
 
-  constructor(private _resultService: ResultService,
+  constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService) {
@@ -23,9 +23,7 @@ export class ResultListComponent implements OnInit {
   }
 
   private getResults(): void {
-    this._resultService.getAll().subscribe(
-      results => this.results = results
-    );
+    this._api.get('results').subscribe(results => this.results = results);
   }
 
   removeResult(id: string): void {
@@ -38,7 +36,7 @@ export class ResultListComponent implements OnInit {
       .then((res) => {
         res.result
           .then(() => {
-            this._resultService.remove(id).subscribe(
+            this._api.delete(`results/${id}`).subscribe(
               () => {
                 this._notificationsService.success('Results', 'Result deleted');
                 this.getResults();

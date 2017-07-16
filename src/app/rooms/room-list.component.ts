@@ -3,6 +3,7 @@ import {RoomService} from './room.service';
 import {IRoom} from './room';
 import {Router} from '@angular/router';
 import {SocketService} from '../shared/socket.service';
+import {ApiService} from '../shared/api.service';
 
 @Component({
   templateUrl: 'room-list.component.html'
@@ -10,16 +11,15 @@ import {SocketService} from '../shared/socket.service';
 export class RoomListComponent implements OnInit {
   rooms: IRoom[];
 
-  constructor(private _roomService: RoomService, private _router: Router, private _socket: SocketService) {
+  constructor(private _roomService: RoomService,
+              private _api: ApiService,
+              private _router: Router,
+              private _socket: SocketService) {
     this.rooms = [];
   }
 
   ngOnInit(): void {
-    this._roomService.getAll()
-      .subscribe(
-        rooms => this.rooms = rooms,
-        error => console.log(error)
-      );
+    this._api.get('rooms').subscribe(rooms => this.rooms = rooms);
   }
 
   joinRoom(room: IRoom): void {

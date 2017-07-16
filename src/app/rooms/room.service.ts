@@ -1,21 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
 import {IRoom} from './room';
 
 @Injectable()
 export class RoomService {
-  private _roomUrl = 'https://polls2.herokuapp.com/api/v1/rooms';
-
-  constructor(private _http: Http) {
-  }
-
-  getAll(): Observable<IRoom[]> {
-    return this._http.get(this._roomUrl)
-      .map((response: Response) => <IRoom[]> response.json().data)
-      .catch(this.handleError);
-  }
-
   setCurrentRoom(room: IRoom): void {
     localStorage.setItem('currentRoom', JSON.stringify(room));
   }
@@ -23,9 +10,4 @@ export class RoomService {
   getCurrentRoom(): IRoom {
     return JSON.parse(localStorage.getItem('currentRoom'));
   }
-
-  private handleError(error: Response) {
-    return Observable.throw(error);
-  }
-
 }
