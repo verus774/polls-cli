@@ -21,10 +21,11 @@
         <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/categories">Categories</a></li>
         <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/polls">Polls</a></li>
         <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/results">Results</a></li>
-        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/users">Users</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isAdmin()"><a routerLink="/users">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="authService.isLoggedIn()"><a href="#" (click)="logout($event)">Logout</a></li>
+        <li *ngIf="authService.isLoggedIn()"><a href="#" (click)="logout($event)">Logout
+          [{{authService.getUser().username}}]</a></li>
       </ul>
     </div>
   </div>

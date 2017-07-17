@@ -3,14 +3,19 @@ import {RouterModule, Routes} from '@angular/router';
 import {PollListComponent} from './poll-list.component';
 import {PollDetailComponent} from './poll-detail.component';
 import {PollAddComponent} from './poll-add.component';
-import {AuthGuard} from '../shared/auth/auth-guard.service';
+import {AuthenticatedGuard} from '../shared/guards/authenticated-guard.service';
 import {PollResolver} from './poll-resolver.service';
 
 const pollRoutes: Routes = [
-  {path: 'polls', component: PollListComponent, canActivate: [AuthGuard]},
-  {path: 'polls/:id', component: PollDetailComponent, canActivate: [AuthGuard], resolve: {poll: PollResolver}},
-  {path: 'polls/:id/edit', component: PollAddComponent, canActivate: [AuthGuard], resolve: {poll: PollResolver}},
-  {path: 'add-poll', component: PollAddComponent, canActivate: [AuthGuard]}
+  {path: 'polls', component: PollListComponent, canActivate: [AuthenticatedGuard]},
+  {path: 'polls/:id', component: PollDetailComponent, canActivate: [AuthenticatedGuard], resolve: {poll: PollResolver}},
+  {
+    path: 'polls/:id/edit',
+    component: PollAddComponent,
+    canActivate: [AuthenticatedGuard],
+    resolve: {poll: PollResolver}
+  },
+  {path: 'add-poll', component: PollAddComponent, canActivate: [AuthenticatedGuard]}
 ];
 
 @NgModule({

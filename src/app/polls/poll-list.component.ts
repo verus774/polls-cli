@@ -2,7 +2,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {IPoll} from './poll';
 import {NotificationsService} from 'angular2-notifications';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
-import {AuthService} from '../shared/auth/auth.service';
+import {AuthService} from '../shared/auth.service';
 import {SocketService} from '../shared/socket.service';
 import {ApiService} from '../shared/api.service';
 import {ICategory} from '../categories/category';

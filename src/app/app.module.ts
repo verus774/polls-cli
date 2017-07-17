@@ -4,8 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {AuthService} from './shared/auth/auth.service';
-import {AuthGuard} from './shared/auth/auth-guard.service';
+import {AuthService} from './shared/auth.service';
+import {AuthenticatedGuard} from './shared/guards/authenticated-guard.service';
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import {NavigationComponent} from './navigation.component';
 import {ModalModule} from 'angular2-modal';
@@ -19,6 +19,7 @@ import {CategoryModule} from './categories/category.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ResultModule} from './results/result.module';
 import {UserModule} from './users/user.module';
+import {AdminGuard} from './shared/guards/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {UserModule} from './users/user.module';
   ],
   providers: [
     AuthService,
-    AuthGuard,
+    AuthenticatedGuard,
+    AdminGuard,
     SocketService
   ],
   bootstrap: [AppComponent]

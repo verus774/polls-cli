@@ -10,7 +10,7 @@
 
     <h4>{{ polls ? 'Total: '+ polls.length : 'No polls' }}</h4>
 
-    <form class="form-inline text-center">
+    <form class="form-inline text-center" *ngIf="categories?.length > 1">
       <div class="form-group">
         <label for="category">Filter by category:</label>
 

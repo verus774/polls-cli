@@ -6,8 +6,9 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {IUser} from '../users/user';
 
 @Injectable()
 export class AuthService {
@@ -59,8 +60,12 @@ export class AuthService {
     return tokenNotExpired(null, this.getToken());
   }
 
-  getUser(): any {
+  getUser(): IUser {
     return this.jwtHelper.decodeToken(this.getToken());
+  }
+
+  isAdmin(): boolean {
+    return this.isLoggedIn() && this.getUser().role === 'admin';
   }
 
   private handleError(error: Response) {
