@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import {IResult} from './result';
 
 
 @Component({
@@ -8,7 +9,7 @@ import {Location} from '@angular/common';
 })
 
 export class ResultDetailComponent implements OnInit {
-  result: any = {};
+  result: IResult;
 
   constructor(private _route: ActivatedRoute, private _location: Location) {
   }

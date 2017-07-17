@@ -11,6 +11,7 @@ import {environment} from '../../../environments/environment';
 @Injectable()
 export class AuthService {
   private _authUrl = environment.authUrl;
+  private _storageKey = 'access_token';
 
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -21,9 +22,8 @@ export class AuthService {
     return this._http.post(`${this._authUrl}/login`, {username: username, password: password})
       .map((res: Response) => {
         const token = res.json().data.token;
-
         if (token) {
-          localStorage.setItem('access_token', token);
+          this.setToken(token);
         }
       })
       .catch(this.handleError);
@@ -35,18 +35,22 @@ export class AuthService {
         const token = res.json().data.token;
 
         if (token) {
-          localStorage.setItem('access_token', token);
+          this.setToken(token);
         }
       })
       .catch(this.handleError);
   }
 
+  setToken(token: string): void {
+    localStorage.setItem(this._storageKey, token);
+  }
+
   getToken(): string {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem(this._storageKey);
   }
 
   logout(): void {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem(this._storageKey);
   }
 
   isLoggedIn(): boolean {
