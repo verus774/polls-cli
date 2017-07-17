@@ -65,14 +65,14 @@ export class PollListComponent implements OnInit {
 
   getPolls(): void {
     this._api.get('polls').subscribe(polls => {
-        this.polls = polls;
+      this.polls = polls;
 
-        for (const poll of polls) {
-          if (poll.active === true) {
-            this.activePoll = poll;
-          }
+      for (const poll of polls) {
+        if (poll.active === true) {
+          this.activePoll = poll;
         }
-        this._socket.emit('joinRoom', this._authService.getUser()._id);
+      }
+      this._socket.emit('joinRoom', this._authService.getUser()._id);
     });
 
   }
@@ -108,6 +108,10 @@ export class PollListComponent implements OnInit {
 
   stopPoll(id: string): void {
     this._socket.emit('stopPoll', {access_token: this._authService.getToken(), id: id});
+  }
+
+  resetCategoryFilter(): void {
+    this.currCategoryId = null;
   }
 
 }
