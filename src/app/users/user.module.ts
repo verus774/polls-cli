@@ -5,6 +5,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import {UserRoutingModule} from './user-routing.module';
 import {UserListComponent} from './user-list.component';
 import {ApiService} from '../shared/api.service';
+import {UserAddComponent} from './user-add.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {ApiService} from '../shared/api.service';
     UserRoutingModule
   ],
   declarations: [
-    UserListComponent
+    UserListComponent,
+    UserAddComponent
   ],
   providers: [
     ApiService

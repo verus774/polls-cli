@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
+import {ICategory} from './category';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {ApiService} from '../shared/api.service';
 
 export class CategoryAddComponent implements OnInit {
   id: string;
-  category: any = {
+  category: ICategory = {
     title: '',
     description: ''
   };

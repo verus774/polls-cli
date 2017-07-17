@@ -4,7 +4,10 @@
       <h3>Categories</h3>
     </div>
 
-    <a [routerLink]="['/add-category']" class="btn btn-success pull-right">Add category</a>
+    <a [routerLink]="['/add-category']" class="btn btn-success pull-right">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+
     <h4>{{ categories ? 'Total: '+ categories.length : 'No categories' }}</h4>
 
     <div>
@@ -12,7 +15,7 @@
         <table class="table table-hover">
           <thead>
           <tr>
-            <th>Category</th>
+            <th>Title</th>
             <th>Action</th>
           </tr>
           </thead>
@@ -20,7 +23,7 @@
           <tr *ngFor="let category of categories | orderBy: 'title'">
             <td>{{ category.title }}</td>
             <td>
-              <a class="btn btn-warning" [routerLink]="['/edit-category', category._id]">Edit</a>
+              <a class="btn btn-warning" [routerLink]="[category._id, 'edit']">Edit</a>
               <button class="btn btn-danger" (click)="removeCategory(category._id)">Remove</button>
             </td>
           </tr>

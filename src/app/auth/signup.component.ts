@@ -25,6 +25,6 @@ export class SignupComponent implements OnInit {
         res => this._router.navigate(['/polls']),
         err => this._router.navigate(['/signup'])
       );
-
   }
+
 }

@@ -20,7 +20,8 @@ const a: IPoll = {
   title: '',
   description: '',
   category: {
-    _id: ''
+    _id: '',
+    title: ''
   },
   active: true,
   questions: [

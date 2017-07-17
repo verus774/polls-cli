@@ -4,6 +4,10 @@
       <h3>Users</h3>
     </div>
 
+    <a [routerLink]="['/add-user']" class="btn btn-success pull-right">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+
     <h4>Total: {{users?.length}}</h4>
 
     <div>
@@ -23,14 +27,13 @@
             <td>{{ user.role }}</td>
             <td>{{ user.createdAt | date: "dd.MM.yyyy" }}</td>
             <td>
-              <a class="btn btn-warning" [routerLink]="['/edit-user', user._id]">Edit</a>
+              <a class="btn btn-warning" [routerLink]="[user._id, 'edit']">Edit</a>
               <button class="btn btn-danger" (click)="removeUser(user._id)">Remove</button>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
-
     </div>
 
   </div>

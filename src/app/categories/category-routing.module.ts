@@ -6,8 +6,8 @@ import {CategoryAddComponent} from './category-add.component';
 
 const categoryRoutes: Routes = [
   {path: 'categories', component: CategoryListComponent, canActivate: [AuthGuard]},
-  {path: 'add-category', component: CategoryAddComponent, canActivate: [AuthGuard]},
-  {path: 'edit-category/:id', component: CategoryAddComponent, canActivate: [AuthGuard]}
+  {path: 'categories/:id/edit', component: CategoryAddComponent, canActivate: [AuthGuard]},
+  {path: 'add-category', component: CategoryAddComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

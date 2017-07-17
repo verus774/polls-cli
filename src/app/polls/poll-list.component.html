@@ -4,9 +4,11 @@
       <h3>Polls</h3>
     </div>
 
-    <h4>{{ polls ? 'Total: '+ polls.length : 'No polls' }}</h4>
+    <a [routerLink]="['/add-poll']" class="btn btn-success pull-right">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
 
-    <a [routerLink]="['/add-poll']" class="btn btn-success pull-right">Add poll</a>
+    <h4>{{ polls ? 'Total: '+ polls.length : 'No polls' }}</h4>
 
     <form class="form-inline text-center">
       <div class="form-group">
