@@ -15,6 +15,7 @@ import {ICategory} from '../categories/category';
 export class PollListComponent implements OnInit {
   polls: IPoll[];
   categories: ICategory[];
+  currCategoryId: string;
   activePoll: IPoll;
   answers: any[] = [];
 

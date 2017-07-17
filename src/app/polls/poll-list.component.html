@@ -11,20 +11,10 @@
     <form class="form-inline text-center">
       <div class="form-group">
         <label for="category">Filter by category:</label>
-        <!--
-                <select class="form-control" name="category" id="category" ng-model="vm.currCategory">
-                  <option ng-repeat="category in vm.categories | unique:'_id' | orderBy:'title'"
-                          value="{{category._id}}">{{category.title}}
-                  </option>
-                </select>
-        -->
-        <!--
-                <select class="form-control" id="category" name="category" [(ngModel)]="poll.category._id">
-                  <option *ngFor="let category of categories" [ngValue]="category._id">{{category.title}}</option>
-                </select>
-        -->
-        <select class="form-control" id="category" name="category">
-          <option *ngFor="let category of categories" [ngValue]="category._id">{{category.title}}</option>
+
+        <select class="form-control" id="category" name="category" [(ngModel)]="currCategoryId">
+          <option *ngFor="let category of categories | orderBy: 'title'" [ngValue]="category._id">{{category.title}}
+          </option>
         </select>
 
       </div>
@@ -59,7 +49,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let poll of polls | orderBy: 'title'" [ngClass]="{'list-group-item-success': poll.active}">
+        <tr *ngFor="let poll of polls | orderBy: 'title' | filterBy: ['category._id']: currCategoryId"
+            [ngClass]="{'list-group-item-success': poll.active}">
           <td><a [routerLink]="['/polls', poll._id]">{{ poll.title }}</a></td>
           <td>
             <div class="btn-group">
