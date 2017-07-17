@@ -5,11 +5,13 @@ import {CategoryRoutingModule} from './category-routing.module';
 import {CategoryAddComponent} from './category-add.component';
 import {FormsModule} from '@angular/forms';
 import {ApiService} from '../shared/api.service';
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NgPipesModule,
     CategoryRoutingModule
   ],
   declarations: [

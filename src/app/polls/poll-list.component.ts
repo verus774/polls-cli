@@ -5,6 +5,7 @@ import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {AuthService} from '../shared/auth/auth.service';
 import {SocketService} from '../shared/socket.service';
 import {ApiService} from '../shared/api.service';
+import {ICategory} from '../categories/category';
 
 @Component({
   templateUrl: 'poll-list.component.html',
@@ -13,6 +14,7 @@ import {ApiService} from '../shared/api.service';
 
 export class PollListComponent implements OnInit {
   polls: IPoll[];
+  categories: ICategory[];
   activePoll: IPoll;
   answers: any[] = [];
 
@@ -25,6 +27,7 @@ export class PollListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCategories();
     this.getPolls();
 
     this._socket.on('startPoll').subscribe((data) => {
@@ -71,6 +74,10 @@ export class PollListComponent implements OnInit {
         this._socket.emit('joinRoom', this._authService.getUser()._id);
     });
 
+  }
+
+  getCategories(): void {
+    this._api.get('categories').subscribe(categories => this.categories = categories);
   }
 
   removePoll(id: string): void {

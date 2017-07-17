@@ -7,11 +7,13 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {PollResolver} from './poll-resolver.service';
 import {ApiService} from '../shared/api.service';
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NgPipesModule,
     PollRoutingModule
   ],
   declarations: [

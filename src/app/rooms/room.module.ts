@@ -6,11 +6,13 @@ import {RoomService} from './room.service';
 import {RoomListComponent} from './room-list.component';
 import {RoomComponent} from './room.component';
 import {ApiService} from '../shared/api.service';
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NgPipesModule,
     RoomRoutingModule
   ],
   declarations: [

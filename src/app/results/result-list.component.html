@@ -17,7 +17,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let result of results">
+          <tr *ngFor="let result of results | orderBy: '-createdAt'">
             <td><a [routerLink]="['/results', result._id]">{{ result.title }}</a></td>
             <td>{{ result.createdAt | date:"dd.MM.yyyy 'at' HH:mm" }}</td>
             <td>
