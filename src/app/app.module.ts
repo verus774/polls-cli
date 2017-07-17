@@ -19,6 +19,7 @@ import {AuthModule} from './auth/auth.module';
 import {CategoryModule} from './categories/category.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ResultModule} from './results/result.module';
+import {UserModule} from './users/user.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ResultModule} from './results/result.module';
     CategoryModule,
     PollModule,
     ResultModule,
+    UserModule,
     AppRoutingModule
   ],
   providers: [
