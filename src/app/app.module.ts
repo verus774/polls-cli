@@ -11,7 +11,6 @@ import {NavigationComponent} from './navigation.component';
 import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SocketService} from './shared/socket.service';
-import {HttpInterceptor} from './shared/http-interceptor';
 import {AppRoutingModule} from './app-routing.module';
 import {PollModule} from './polls/poll.module';
 import {RoomModule} from './rooms/room.module';
@@ -45,8 +44,7 @@ import {UserModule} from './users/user.module';
   providers: [
     AuthService,
     AuthGuard,
-    SocketService,
-    HttpInterceptor
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

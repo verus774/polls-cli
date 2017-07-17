@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
 import {IUser} from './user';
 
