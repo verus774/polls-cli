@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._authService.logout();
+    if (this._authService.isLoggedIn()) {
+      this._router.navigate(['/polls']);
+    }
   }
 
   login(event: any): void {

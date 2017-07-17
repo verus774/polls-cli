@@ -14,7 +14,9 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._authService.logout();
+    if (this._authService.isLoggedIn()) {
+      this._router.navigate(['/polls']);
+    }
   }
 
   signup(event: any): void {

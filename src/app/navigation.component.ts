@@ -8,4 +8,9 @@ import {AuthService} from './shared/auth/auth.service';
 export class NavigationComponent {
   constructor(public authService: AuthService) {
   }
+
+  logout(event: any): void {
+    event.preventDefault();
+    this.authService.logout();
+  }
 }

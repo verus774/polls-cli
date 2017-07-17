@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {environment} from '../../../environments/environment';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http, private _router: Router) {
   }
 
   login(username: string, password: string): Observable<any> {
@@ -51,6 +52,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this._storageKey);
+    this._router.navigate(['/login']);
   }
 
   isLoggedIn(): boolean {
