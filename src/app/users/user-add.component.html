@@ -4,7 +4,7 @@
       <h3>{{ id ? 'Update' : 'Add' }} user</h3>
     </div>
 
-    <form role="form" name="addUserForm" (submit)="onSubmit()">
+    <form role="form" name="addUserForm" (submit)="onSubmit()" autocomplete="off">
 
       <div class="form-group">
         <label for="username">Username</label>
@@ -21,6 +21,16 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Enter password"
                [(ngModel)]="user.password">
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"
+                 name="role"
+                 (change)="$event.target.checked ? user.role='admin': user.role=undefined"
+                 [(ngModel)]="user.role">
+          Admin
+        </label>
       </div>
 
       <div class="form-group">
