@@ -19,9 +19,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(event: any): void {
-    event.preventDefault();
-
+  login(): void {
     this._authService.login(this.user.username, this.user.password)
       .subscribe(
         res => this._router.navigate(['/polls']),
