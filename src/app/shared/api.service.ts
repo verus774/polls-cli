@@ -16,19 +16,19 @@ export class ApiService {
   }
 
   get(url: string) {
-    return this.request(url, RequestMethod.Get);
+    return this.request(`${this._apiUrl}/${url}`, RequestMethod.Get);
   }
 
   post(url: string, body: Object) {
-    return this.request(url, RequestMethod.Post, body);
+    return this.request(`${this._apiUrl}/${url}`, RequestMethod.Post, body);
   }
 
   put(url: string, body: Object) {
-    return this.request(url, RequestMethod.Put, body);
+    return this.request(`${this._apiUrl}/${url}`, RequestMethod.Put, body);
   }
 
   delete(url: string) {
-    return this.request(url, RequestMethod.Delete);
+    return this.request(`${this._apiUrl}/${url}`, RequestMethod.Delete);
   }
 
   request(url: string, method: RequestMethod, body?: Object) {
@@ -37,7 +37,7 @@ export class ApiService {
     headers.append('Authorization', this._authService.getToken());
 
     const requestOptions = new RequestOptions({
-      url: `${this._apiUrl}/${url}`,
+      url: url,
       method: method,
       headers: headers
     });
