@@ -5,6 +5,7 @@ import {ApiService} from '../shared/api.service';
 import {RequestMethod} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {NotificationsService} from 'angular2-notifications/dist';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -12,7 +13,6 @@ import {NotificationsService} from 'angular2-notifications/dist';
 })
 
 export class LoginComponent implements OnInit {
-  user: any = {};
   private _authUrl = environment.authUrl;
 
   constructor(private _api: ApiService,
@@ -27,12 +27,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(): void {
-    this._api.request(`${this._authUrl}/login`, RequestMethod.Post, this.user)
+  onSubmit(form: NgForm): void {
+    this._api.request(`${this._authUrl}/login`, RequestMethod.Post, form.value)
       .subscribe(
         res => this._router.navigate(['/polls']),
-        err => this._notificationsService.error('Error', 'Login fail')
+        err => {
+          form.reset();
+          this._notificationsService.error('Error', 'Login fail');
+        }
       );
-
   }
 }

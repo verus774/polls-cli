@@ -3,27 +3,40 @@
     <div class="page-header text-center">
       <h3>Profile</h3>
     </div>
-    <form role="form" name="signupForm" (submit)="onSubmit()">
+    <form role="form" #signupForm="ngForm" (submit)="onSubmit()" autocomplete="off" novalidate>
 
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Enter username"
-               [(ngModel)]="user.username">
+               [(ngModel)]="user.username"
+               required
+               minlength="4"
+               maxlength="20"
+               pattern="^[a-z0-9_-]*$"
+        >
       </div>
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name" [(ngModel)]="user.name">
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name" [(ngModel)]="user.name"
+               required
+               minlength="4"
+               maxlength="100"
+        >
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Enter password"
-               [(ngModel)]="user.password">
+               [(ngModel)]="user.password"
+               minlength="3"
+               maxlength="100"
+               pattern="^[ A-Za-z0-9_@./#&+-]*$"
+        >
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn btn-success" [disabled]="!signupForm.valid">
           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save
         </button>
       </div>

@@ -4,17 +4,27 @@
     <h3>{{ id ? 'Update' : 'Add' }} poll</h3>
   </div>
 
-  <form #addPollForm="ngForm" (submit)="onSubmit()">
+  <form role="form" #addPollForm="ngForm" (submit)="onSubmit()" novalidate>
 
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" class="form-control" [(ngModel)]="poll.title">
+      <input type="text" id="title" name="title" class="form-control" [(ngModel)]="poll.title"
+             required
+             maxlength="100"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description (optional)</label>
+      <input type="text" id="description" name="description" class="form-control" [(ngModel)]="poll.description"
+             maxlength="100"
+      >
     </div>
 
     <div class="form-group">
       <label for="category">Category: </label>
 
-      <select class="form-control" id="category" name="category" [(ngModel)]="poll.category._id">
+      <select class="form-control" id="category" name="category" [(ngModel)]="poll.category._id" required>
         <option *ngFor="let category of categories" [ngValue]="category._id">{{category.title}}</option>
       </select>
 
@@ -36,7 +46,8 @@
         <textarea class="form-control" rows="5"
                   id="question-{{i}}"
                   name="text{{i}}"
-                  [(ngModel)]="question.text">
+                  [(ngModel)]="question.text"
+                  required>
         </textarea>
 
         <br>
@@ -48,7 +59,8 @@
                      id="{{i}}-{{j}}"
                      name="choice{{i}}-{{j}}"
                      class="form-control"
-                     [(ngModel)]="question.choices[j]">
+                     [(ngModel)]="question.choices[j]"
+                     required>
               <span class="input-group-btn">
                 <button class="btn btn-danger" type="button" title="Remove choice"
                         (click)="removeChoice(i, j)"
@@ -70,14 +82,13 @@
 
     <br><br>
     <div class="text-center">
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" [disabled]="!addPollForm.valid">
         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Save
       </button>
       <button type="button" class="btn btn-warning">
         <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset
       </button>
     </div>
-    <pre>{{ poll | json }}</pre>
   </form>
 
 </div>
