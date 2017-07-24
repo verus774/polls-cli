@@ -82,10 +82,10 @@
 
     <br><br>
     <div class="text-center">
-      <button type="submit" class="btn btn-success" [disabled]="!addPollForm.valid">
+      <button type="submit" class="btn btn-success" [disabled]="addPollForm.invalid">
         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Save
       </button>
-      <button type="button" class="btn btn-warning">
+      <button type="button" class="btn btn-warning" (click)="onReset(addPollForm)">
         <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset
       </button>
     </div>

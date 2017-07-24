@@ -5,23 +5,27 @@
     </div>
 
     <form role="form" #addCategoryForm="ngForm" (submit)="onSubmit()" autocomplete="off" novalidate>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{ 'has-error' : title.invalid && !title.pristine }">
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" class="form-control" [(ngModel)]="category.title"
+        <input type="text" id="title" name="title" class="form-control"
+               [(ngModel)]="category.title"
+               #title="ngModel"
                required
                maxlength="100"
         >
+        <p *ngIf="title.dirty && title.hasError('required')" class="help-block">Required field</p>
       </div>
 
       <div class="form-group">
         <label for="description">Description (optional)</label>
-        <input type="text" id="description" name="description" class="form-control" [(ngModel)]="category.description"
+        <input type="text" id="description" name="description" class="form-control"
+               [(ngModel)]="category.description"
                maxlength="100"
         >
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-success" [disabled]="!addCategoryForm.valid">
+        <button type="submit" class="btn btn-success" [disabled]="addCategoryForm.invalid">
           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Save
         </button>
       </div>

@@ -5,37 +5,53 @@
     </div>
     <form role="form" #signupForm="ngForm" (submit)="onSubmit(signupForm)" autocomplete="off" novalidate>
 
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{ 'has-error' : username.invalid && !username.pristine }">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" ngModel
+        <input type="text" id="username" name="username" class="form-control" placeholder="Enter username"
+               ngModel
+               #username="ngModel"
                required
                minlength="4"
                maxlength="20"
                pattern="^[a-z0-9_-]*$"
         >
+        <p *ngIf="username.dirty && username.hasError('pattern')" class="help-block">Only Latin characters, numbers, '-'
+          and '_' symbols</p>
+        <p *ngIf="username.dirty && username.hasError('minlength')" class="help-block">At least 4 characters</p>
+        <p *ngIf="username.dirty && username.hasError('required')" class="help-block">Required field</p>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{ 'has-error' : name.invalid && !name.pristine }">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name" ngModel
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+               ngModel
+               #name="ngModel"
                required
                minlength="4"
                maxlength="100"
         >
+        <p *ngIf="name.dirty && name.hasError('minlength')" class="help-block">At least 4 characters</p>
+        <p *ngIf="name.dirty && name.hasError('required')" class="help-block">Required field</p>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{ 'has-error' : password.invalid && !password.pristine }">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" ngModel
+        <input type="password" id="password" name="password" class="form-control" placeholder="Enter password"
+               ngModel
+               #password="ngModel"
                required
                minlength="3"
                maxlength="100"
                pattern="^[ A-Za-z0-9_@./#&+-]*$"
         >
+        <p *ngIf="password.dirty && password.hasError('pattern')" class="help-block">Only Latin characters, numbers and
+          special symbols</p>
+        <p *ngIf="password.dirty && password.hasError('minlength')" class="help-block">At least 3 characters</p>
+        <p *ngIf="password.dirty && password.hasError('required')" class="help-block">Required field</p>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Signup</button>
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Signup</button>
       </div>
 
     </form>

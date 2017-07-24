@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
 import {ICategory} from '../categories/category';
 import {ApiService} from '../shared/api.service';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -81,5 +82,9 @@ export class PollAddComponent implements OnInit {
 
   private getCategories(): void {
     this._api.get('categories').subscribe(categories => this.categories = categories);
+  }
+
+  onReset(form: NgForm): void {
+    form.reset();
   }
 }
