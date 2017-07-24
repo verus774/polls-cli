@@ -1,6 +1,9 @@
 export interface IResult {
   _id?: string;
-  title?: string;
+  poll: {
+    id: string;
+    title: string;
+  };
   results: {
     questionId: string;
     questionText: string;
