@@ -5,6 +5,25 @@
       <h4>({{ result.createdAt | date:"dd.MM.yyyy 'at' HH:mm" }})</h4>
     </div>
   </div>
+
+  <div *ngFor="let items of result.results | groupBy: 'questionText' | pairs">
+    <p>{{items[0]}}</p>
+    <table class="table table-bordered table-hover" style="table-layout: fixed;">
+      <thead>
+      <tr>
+        <th>Answer</th>
+        <th>Count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items[1]">
+        <td>{{item.answer}}</td>
+        <td>{{item.count}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
-<pre>{{ result | json}}</pre>
+<!--<pre>{{ filteredResults | json}}</pre>-->
