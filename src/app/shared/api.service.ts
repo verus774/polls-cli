@@ -51,7 +51,7 @@ export class ApiService {
     return this._http.request(request)
       .map((res: Response) => res.json().data)
       .map((data: any) => {
-        if (data.token) {
+        if (data && data.token) {
           this._authService.setToken(data.token);
         }
         return data;
