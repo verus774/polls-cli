@@ -90,8 +90,8 @@ export class PollListComponent implements OnInit {
     this.modal.confirm()
       .isBlocking(false)
       .keyboard(27)
-      .title('Delete poll?')
-      .body('Are you sure you want to delete this poll and the related results?')
+      .title(this._translate.instant('POLL_LIST.MODAL_DELETE_TITLE'))
+      .body(this._translate.instant('POLL_LIST.MODAL_DELETE_BODY'))
       .open()
       .then((res) => {
         res.result

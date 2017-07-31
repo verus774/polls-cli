@@ -32,8 +32,8 @@ export class UserListComponent implements OnInit {
     this.modal.confirm()
       .isBlocking(false)
       .keyboard(27)
-      .title('Delete user?')
-      .body('Are you sure you want to delete this user and the related objects?')
+      .title(this._translate.instant('USER_LIST.MODAL_DELETE_TITLE'))
+      .body(this._translate.instant('USER_LIST.MODAL_DELETE_BODY'))
       .open()
       .then((res) => {
         res.result

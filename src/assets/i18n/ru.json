@@ -43,7 +43,9 @@
     "TOTAL": "Всего: ",
     "NO_CATEGORIES": "Нет категорий",
     "NOTIFICATION_TITLE": "Категории",
-    "NOTIFICATION_DELETED": "Категория удалена"
+    "NOTIFICATION_DELETED": "Категория удалена",
+    "MODAL_DELETE_TITLE": "Удалить категорию?",
+    "MODAL_DELETE_BODY": "Вы уверены, что хотите удалить категорию?"
   },
   "POLL_ADD": {
     "PAGE_HEADER_ADD": "Добавить опрос",
@@ -78,7 +80,9 @@
     "RESULT_FOR": "Результат для",
     "NO_ACTIVE_POLLS": "Нет активных опросов",
     "NOTIFICATION_TITLE": "Опросы",
-    "NOTIFICATION_DELETED": "Опрос удален"
+    "NOTIFICATION_DELETED": "Опрос удален",
+    "MODAL_DELETE_TITLE": "Удалить опрос?",
+    "MODAL_DELETE_BODY": "Вы уверены, что хотите удалить опрос и связанные результаты?"
   },
   "RESULT_DET": {
     "ANSWER": "Ответ",
@@ -92,7 +96,9 @@
     "TOTAL": "Всего: ",
     "NO_RESULTS": "Нет результатов",
     "NOTIFICATION_TITLE": "Результаты",
-    "NOTIFICATION_DELETED": "Результат удален"
+    "NOTIFICATION_DELETED": "Результат удален",
+    "MODAL_DELETE_TITLE": "Удалить результат?",
+    "MODAL_DELETE_BODY": "Вы уверены, что хотите удалить результат?"
   },
   "ROOM": {
     "PAGE_HEADER": "Комната",
@@ -119,7 +125,9 @@
     "ACTION": "Действие",
     "TOTAL": "Всего: ",
     "NOTIFICATION_TITLE": "Пользователи",
-    "NOTIFICATION_DELETED": "Пользователь удален"
+    "NOTIFICATION_DELETED": "Пользователь удален",
+    "MODAL_DELETE_TITLE": "Удалить пользователя?",
+    "MODAL_DELETE_BODY": "Вы уверены, что хотите удалить пользователя и связанные объекты?"
   },
   "BUTTONS": {
     "SAVE": "Сохранить",

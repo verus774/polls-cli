@@ -32,8 +32,8 @@ export class CategoryListComponent implements OnInit {
     this.modal.confirm()
       .isBlocking(false)
       .keyboard(27)
-      .title('Delete category?')
-      .body('Are you sure you want to delete this category?')
+      .title(this._translate.instant('CAT_LIST.MODAL_DELETE_TITLE'))
+      .body(this._translate.instant('CAT_LIST.MODAL_DELETE_BODY'))
       .open()
       .then((res) => {
         res.result
