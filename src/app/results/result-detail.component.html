@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="page-header text-center">
       <h3>{{ result.poll.title }}</h3>
-      <h4>({{ result.createdAt | date:"dd.MM.yyyy 'at' HH:mm" }})</h4>
+      <h4>({{ result.createdAt | date:"dd.MM.yyyy '-' HH:mm" }})</h4>
     </div>
   </div>
 
@@ -11,8 +11,8 @@
     <table class="table table-bordered table-hover" style="table-layout: fixed;">
       <thead>
       <tr>
-        <th>Answer</th>
-        <th>Count</th>
+        <th>{{'RESULT_DET.ANSWER' | translate}}</th>
+        <th>{{'RESULT_DET.COUNT' | translate}}</th>
       </tr>
       </thead>
       <tbody>
@@ -25,5 +25,3 @@
   </div>
 
 </div>
-
-<!--<pre>{{ filteredResults | json}}</pre>-->

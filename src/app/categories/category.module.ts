@@ -6,13 +6,15 @@ import {CategoryAddComponent} from './category-add.component';
 import {FormsModule} from '@angular/forms';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgPipesModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    TranslateModule
   ],
   declarations: [
     CategoryListComponent,

@@ -6,12 +6,14 @@ import {SignupComponent} from './signup.component';
 import {LoginComponent} from './login.component';
 import {ProfileComponent} from './profile.component';
 import {ApiService} from '../shared/api.service';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    TranslateModule
   ],
   declarations: [
     SignupComponent,

@@ -6,12 +6,14 @@ import {ResultDetailComponent} from './result-detail.component';
 import {ResultResolver} from './result-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     NgPipesModule,
-    ResultRoutingModule
+    ResultRoutingModule,
+    TranslateModule
   ],
   declarations: [
     ResultListComponent,

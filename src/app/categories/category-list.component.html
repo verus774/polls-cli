@@ -1,30 +1,32 @@
 <div class="row">
   <div class="col-md-12">
     <div class="page-header text-center">
-      <h3>Categories</h3>
+      <h3>{{'CAT_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
 
     <a [routerLink]="['/add-category']" class="btn btn-success pull-right">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 
-    <h4>{{ categories ? 'Total: '+ categories.length : 'No categories' }}</h4>
+    <h4>{{ categories ? (('CAT_LIST.TOTAL' | translate) + categories.length) : ('CAT_LIST.NO_CATEGORIES' | translate)
+      }}</h4>
 
     <div>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
           <tr>
-            <th>Title</th>
-            <th>Action</th>
+            <th>{{'CAT_LIST.TITLE' | translate}}</th>
+            <th>{{'CAT_LIST.ACTION' | translate}}</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let category of categories | orderBy: 'title'">
             <td>{{ category.title }}</td>
             <td>
-              <a class="btn btn-warning" [routerLink]="[category._id, 'edit']">Edit</a>
-              <button class="btn btn-danger" (click)="removeCategory(category._id)">Remove</button>
+              <a class="btn btn-warning" [routerLink]="[category._id, 'edit']">{{'BUTTONS.EDIT' | translate}}</a>
+              <button class="btn btn-danger" (click)="removeCategory(category._id)">{{'BUTTONS.REMOVE' | translate}}
+              </button>
             </td>
           </tr>
           </tbody>

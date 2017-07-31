@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-12">
     <div class="page-header text-center">
-      <h3>Rooms</h3>
+      <h3>{{'ROOM_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
     <table class="table">
       <thead>
       <tr>
-        <th>Room</th>
-        <th>Action</th>
+        <th>{{'ROOM_LIST.ROOM' | translate}}</th>
+        <th>{{'ROOM_LIST.ACTION' | translate}}</th>
       </tr>
       </thead>
       <tbody>
@@ -15,7 +15,7 @@
         <td>{{ room.name }}</td>
         <td>
           <!--<a class="btn btn-success" [routerLink]="['/rooms', room._id]">Enter</a>-->
-          <button class="btn btn-success" (click)="joinRoom(room)">Enter</button>
+          <button class="btn btn-success" (click)="joinRoom(room)">{{'BUTTONS.ENTER' | translate}}</button>
         </td>
       </tr>
       </tbody>

@@ -16,17 +16,38 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/signup">Signup</a></li>
-        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/login">Login</a></li>
-        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/categories">Categories</a></li>
-        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/polls">Polls</a></li>
-        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/results">Results</a></li>
-        <li routerLinkActive="active" *ngIf="authService.isAdmin()"><a routerLink="/users">Users</a></li>
+        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/signup">{{'SIGNUP.PAGE_HEADER' |
+          translate}}</a></li>
+        <li routerLinkActive="active" *ngIf="!authService.isLoggedIn()"><a routerLink="/login">{{'LOGIN.PAGE_HEADER' |
+          translate}}</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/categories">{{'CAT_LIST.PAGE_HEADER'
+          | translate}}</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/polls">{{'POLL_LIST.PAGE_HEADER'
+          | translate}}</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/results">{{'RESULT_LIST.PAGE_HEADER'
+          | translate}}</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isAdmin()"><a routerLink="/users">{{'USER_LIST.PAGE_HEADER' |
+          translate}}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/profile">Profile</a></li>
-        <li *ngIf="authService.isLoggedIn()"><a href="#" (click)="logout($event)">Logout
-          [{{authService.getUser().username}}]</a></li>
+        <li routerLinkActive="active" *ngIf="authService.isLoggedIn()"><a routerLink="/profile">{{'PROFILE.PAGE_HEADER'
+          | translate}}</a></li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            {{'NAV.LANGUAGE' | translate}} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu lang-select" role="menu">
+            <li><a href="#" (click)="changeLanguage($event, 'en')">{{'NAV.LANGUAGES.EN' | translate}}</a></li>
+            <li><a href="#" (click)="changeLanguage($event, 'ru')">{{'NAV.LANGUAGES.RU' | translate}}</a></li>
+          </ul>
+        </li>
+
+        <li *ngIf="authService.isLoggedIn()">
+          <a href="#" (click)="logout($event)">
+            {{'NAV.LOGOUT' | translate}} [{{authService.getUser().username}}]
+          </a>
+        </li>
       </ul>
     </div>
   </div>

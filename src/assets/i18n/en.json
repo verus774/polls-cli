@@ -1,0 +1,117 @@
+{
+  "NAV": {
+    "LANGUAGE": "Language",
+    "LANGUAGES": {
+      "EN": "English",
+      "RU": "Russian"
+    },
+    "LOGOUT": "Logout"
+  },
+  "AUTH": {
+    "USERNAME": "Username",
+    "NAME": "Name",
+    "PASSWORD": "Password",
+    "USERNAME_PLACEHOLDER": "Enter username",
+    "NAME_PLACEHOLDER": "Enter name",
+    "PASSWORD_PLACEHOLDER": "Enter password"
+  },
+  "LOGIN": {
+    "PAGE_HEADER": "Login"
+  },
+  "PROFILE": {
+    "PAGE_HEADER": "Profile"
+  },
+  "SIGNUP": {
+    "PAGE_HEADER": "Signup"
+  },
+  "CAT_ADD": {
+    "PAGE_HEADER_ADD": "Add category",
+    "PAGE_HEADER_UPD": "Update category",
+    "TITLE": "Title",
+    "TITLE_PLACEHOLDER": "Enter title",
+    "DESCRIPTION": "Description (optional)",
+    "DESCRIPTION_PLACEHOLDER": "Enter description"
+  },
+  "CAT_LIST": {
+    "PAGE_HEADER": "Categories",
+    "TITLE": "Title",
+    "ACTION": "Action",
+    "TOTAL": "Total: ",
+    "NO_CATEGORIES": "No categories"
+  },
+  "POLL_ADD": {
+    "PAGE_HEADER_ADD": "Add poll",
+    "PAGE_HEADER_UPD": "Update poll",
+    "TITLE": "Title",
+    "DESCRIPTION": "Description (optional)",
+    "CATEGORY": "Category",
+    "QUESTION": "Question",
+    "CHOICE": "Choice",
+    "REMOVE_QUESTION_BTN": "Remove question",
+    "ADD_QUESTION_BTN": "Remove question"
+  },
+  "POLL_DET": {
+    "DESCRIPTION": "Description",
+    "CATEGORY": "Category",
+    "CREATED": "Created",
+    "UPDATED": "Updated",
+    "QUESTIONS": "Questions",
+    "QUESTION": "Question"
+  },
+  "POLL_LIST": {
+    "PAGE_HEADER": "Polls",
+    "TOTAL": "Total: ",
+    "NO_POLLS": "No polls",
+    "CAT_FILTER": "Filter by category",
+    "TITLE": "Title",
+    "ACTION": "Action",
+    "STOP_POLL_BTN": "Stop poll",
+    "RESULT_FOR": "Result for",
+    "NO_ACTIVE_POLLS": "No active polls"
+  },
+  "RESULT_DET": {
+    "ANSWER": "Answer",
+    "COUNT": "Count"
+  },
+  "RESULT_LIST": {
+    "PAGE_HEADER": "Results",
+    "TITLE": "Title",
+    "DATE": "Date",
+    "ACTION": "Action",
+    "TOTAL": "Total: ",
+    "NO_RESULTS": "No results"
+  },
+  "ROOM": {
+    "PAGE_HEADER": "Room",
+    "LEAVE_ROOM": "Leave room"
+  },
+  "ROOM_LIST": {
+    "PAGE_HEADER": "Rooms",
+    "ROOM": "Room",
+    "ACTION": "Action"
+  },
+  "USER_ADD": {
+    "PAGE_HEADER_ADD": "Add user",
+    "PAGE_HEADER_UPD": "Update user",
+    "ADMIN": "Admin"
+  },
+  "USER_LIST": {
+    "PAGE_HEADER": "Users",
+    "USERNAME": "Username",
+    "ROLE": "Role",
+    "CREATED": "Created",
+    "ACTION": "Action",
+    "TOTAL": "Total: "
+  },
+  "BUTTONS": {
+    "SAVE": "Save",
+    "SUBMIT": "Submit",
+    "EDIT": "Edit",
+    "REMOVE": "Remove",
+    "LOGIN": "Login",
+    "SIGNUP": "Signup",
+    "RESET": "Reset",
+    "BACK": "Back",
+    "ENTER": "Enter"
+  }
+}

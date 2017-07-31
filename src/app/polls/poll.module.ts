@@ -8,13 +8,15 @@ import {FormsModule} from '@angular/forms';
 import {PollResolver} from './poll-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgPipesModule,
-    PollRoutingModule
+    PollRoutingModule,
+    TranslateModule
   ],
   declarations: [
     PollListComponent,

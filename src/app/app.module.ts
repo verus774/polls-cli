@@ -20,6 +20,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ResultModule} from './results/result.module';
 import {UserModule} from './users/user.module';
 import {AdminGuard} from './shared/guards/admin-guard.service';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -30,10 +37,18 @@ import {AdminGuard} from './shared/guards/admin-guard.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     ModalModule.forRoot(),
     BootstrapModalModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     AuthModule,
     RoomModule,
     CategoryModule,

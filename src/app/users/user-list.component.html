@@ -1,24 +1,24 @@
 <div class="row">
   <div class="col-md-12">
     <div class="page-header text-center">
-      <h3>Users</h3>
+      <h3>{{'USER_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
 
     <a [routerLink]="['/add-user']" class="btn btn-success pull-right">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 
-    <h4>Total: {{users?.length}}</h4>
+    <h4>{{'USER_LIST.TOTAL' | translate}} {{users?.length}}</h4>
 
     <div>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
           <tr>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Created</th>
-            <th>Action</th>
+            <th>{{'USER_LIST.USERNAME' | translate}}</th>
+            <th>{{'USER_LIST.ROLE' | translate}}</th>
+            <th>{{'USER_LIST.CREATED' | translate}}</th>
+            <th>{{'USER_LIST.ACTION' | translate}}</th>
           </tr>
           </thead>
           <tbody>
@@ -27,8 +27,8 @@
             <td>{{ user.role }}</td>
             <td>{{ user.createdAt | date: "dd.MM.yyyy" }}</td>
             <td>
-              <a class="btn btn-warning" [routerLink]="[user._id, 'edit']">Edit</a>
-              <button class="btn btn-danger" (click)="removeUser(user._id)">Remove</button>
+              <a class="btn btn-warning" [routerLink]="[user._id, 'edit']">{{'BUTTONS.EDIT' | translate}}</a>
+              <button class="btn btn-danger" (click)="removeUser(user._id)">{{'BUTTONS.REMOVE' | translate}}</button>
             </td>
           </tr>
           </tbody>

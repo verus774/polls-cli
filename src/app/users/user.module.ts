@@ -6,13 +6,15 @@ import {UserRoutingModule} from './user-routing.module';
 import {UserListComponent} from './user-list.component';
 import {ApiService} from '../shared/api.service';
 import {UserAddComponent} from './user-add.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgPipesModule,
-    UserRoutingModule
+    UserRoutingModule,
+    TranslateModule
   ],
   declarations: [
     UserListComponent,

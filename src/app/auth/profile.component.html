@@ -1,13 +1,14 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="page-header text-center">
-      <h3>Profile</h3>
+      <h3>{{'PROFILE.PAGE_HEADER' | translate}}</h3>
     </div>
     <form role="form" #signupForm="ngForm" (submit)="onSubmit()" autocomplete="off" novalidate>
 
       <div class="form-group" [ngClass]="{ 'has-error' : username.invalid && !username.pristine }">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Enter username"
+        <label for="username">{{'AUTH.USERNAME' | translate}}</label>
+        <input type="text" id="username" name="username" class="form-control"
+               placeholder="{{'AUTH.USERNAME_PLACEHOLDER' | translate}}"
                [(ngModel)]="user.username"
                #username="ngModel"
                required
@@ -22,8 +23,9 @@
       </div>
 
       <div class="form-group" [ngClass]="{ 'has-error' : name.invalid && !name.pristine }">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"
+        <label for="name">{{'AUTH.NAME' | translate}}</label>
+        <input type="text" id="name" name="name" class="form-control"
+               placeholder="{{'AUTH.NAME_PLACEHOLDER' | translate}}"
                [(ngModel)]="user.name"
                #name="ngModel"
                required
@@ -35,8 +37,9 @@
       </div>
 
       <div class="form-group" [ngClass]="{ 'has-error' : password.invalid && !password.pristine }">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Enter password"
+        <label for="password">{{'AUTH.PASSWORD' | translate}}</label>
+        <input type="password" id="password" name="password" class="form-control"
+               placeholder="{{'AUTH.PASSWORD_PLACEHOLDER' | translate}}"
                [(ngModel)]="user.password"
                #password="ngModel"
                minlength="3"
@@ -50,7 +53,7 @@
 
       <div class="form-group">
         <button type="submit" class="btn btn-success" [disabled]="signupForm.invalid">
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{'BUTTONS.SAVE' | translate}}
         </button>
       </div>
 

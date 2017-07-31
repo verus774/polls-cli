@@ -1,13 +1,13 @@
 <div class="col-md-6 col-md-offset-3">
 
   <div class="page-header text-center">
-    <h3>{{ id ? 'Update' : 'Add' }} poll</h3>
+    <h3>{{ id ? ('POLL_ADD.PAGE_HEADER_UPD' | translate) : ('POLL_ADD.PAGE_HEADER_ADD' | translate)}}</h3>
   </div>
 
   <form role="form" #addPollForm="ngForm" (submit)="onSubmit()" novalidate>
 
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">{{'POLL_ADD.TITLE' | translate}}</label>
       <input type="text" id="title" name="title" class="form-control" [(ngModel)]="poll.title"
              required
              maxlength="100"
@@ -15,14 +15,14 @@
     </div>
 
     <div class="form-group">
-      <label for="description">Description (optional)</label>
+      <label for="description">{{'POLL_ADD.DESCRIPTION' | translate}}</label>
       <input type="text" id="description" name="description" class="form-control" [(ngModel)]="poll.description"
              maxlength="100"
       >
     </div>
 
     <div class="form-group">
-      <label for="category">Category: </label>
+      <label for="category">{{'POLL_ADD.CATEGORY' | translate}}</label>
 
       <select class="form-control" id="category" name="category" [(ngModel)]="poll.category._id" required>
         <option *ngFor="let category of categories" [ngValue]="category._id">{{category.title}}</option>
@@ -34,12 +34,12 @@
       <div *ngFor="let question of poll.questions; let i=index">
 
         <br>
-        <label for="question-{{i}}">Question {{i + 1}}</label>
+        <label for="question-{{i}}">{{'POLL_ADD.QUESTION' | translate}} {{i + 1}}</label>
 
         <button type="button" class="btn btn-danger pull-right"
                 (click)="removeQuestion(i)"
                 [disabled]="poll.questions.length < 2">
-          Remove question
+          {{'POLL_ADD.REMOVE_QUESTION_BTN' | translate}}
         </button>
         <br><br>
 
@@ -53,7 +53,7 @@
         <br>
         <div class="form-group">
           <div *ngFor="let choice of question.choices; let j=index; trackBy: trackByFn">
-            <label for="{{i}}-{{j}}">Choice {{j + 1}}</label>
+            <label for="{{i}}-{{j}}">{{'POLL_ADD.CHOICE' | translate}} {{j + 1}}</label>
             <div class="form-group input-group">
               <input type="text"
                      id="{{i}}-{{j}}"
@@ -62,7 +62,7 @@
                      [(ngModel)]="question.choices[j]"
                      required>
               <span class="input-group-btn">
-                <button class="btn btn-danger" type="button" title="Remove choice"
+                <button class="btn btn-danger" type="button"
                         (click)="removeChoice(i, j)"
                         [disabled]="question.choices.length < 3">
                   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;
@@ -72,21 +72,23 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-success pull-right" title="Add choice" (click)="addChoice(i)">
+        <button type="button" class="btn btn-success pull-right" (click)="addChoice(i)">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
         </button>
         <br><br><br><br>
       </div>
-      <button type="button" class="btn btn-success" (click)="addQuestion()">Add question</button>
+      <button type="button" class="btn btn-success" (click)="addQuestion()">{{'POLL_ADD.ADD_QUESTION_BTN' |
+        translate}}
+      </button>
     </div>
 
     <br><br>
     <div class="text-center">
       <button type="submit" class="btn btn-success" [disabled]="addPollForm.invalid">
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Save
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;{{'BUTTONS.SAVE' | translate}}
       </button>
       <button type="button" class="btn btn-warning" (click)="onReset(addPollForm)">
-        <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset
+        <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> {{'BUTTONS.RESET' | translate}}
       </button>
     </div>
   </form>

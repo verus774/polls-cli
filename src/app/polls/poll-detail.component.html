@@ -5,31 +5,31 @@
     </div>
 
     <button type="button" class="btn btn-warning" (click)="onBack()">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> {{'BUTTONS.BACK' | translate}}
     </button>
     <br><br>
 
     <div>
       <p *ngIf="poll.description">
-        <strong>Description:</strong> {{ poll.description }}
+        <strong>{{'POLL_DET.DESCRIPTION' | translate}}:</strong> {{ poll.description }}
         <br>
       </p>
 
       <p>
-        <strong>Category:</strong> {{ poll.category?.title }}
+        <strong>{{'POLL_DET.CATEGORY' | translate}}:</strong> {{ poll.category?.title }}
         <br>
       </p>
 
       <p>
-        <strong>Created:</strong> {{ poll.createdAt | date:'dd.MM.yyyy' }}
+        <strong>{{'POLL_DET.CREATED' | translate}}:</strong> {{ poll.createdAt | date:'dd.MM.yyyy' }}
         <br>
-        <strong>Updated:</strong> {{ poll.updatedAt | date:'dd.MM.yyyy' }}
+        <strong>{{'POLL_DET.UPDATED' | translate}}:</strong> {{ poll.updatedAt | date:'dd.MM.yyyy' }}
       </p>
 
-      <h4 class="text-center">Questions</h4>
+      <h4 class="text-center">{{'POLL_DET.QUESTIONS' | translate}}</h4>
 
       <div *ngFor="let question of poll.questions; let i=index">
-        <p><strong>Question #{{i+1}}</strong>: {{ question.text }}</p>
+        <p><strong>{{'POLL_DET.QUESTION' | translate}} #{{i+1}}</strong>: {{ question.text }}</p>
         <ul>
           <li *ngFor="let choice of question.choices">
             {{ choice }}
