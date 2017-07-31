@@ -1,2 +1,117 @@
 {
+  "NAV": {
+    "LANGUAGE": "Язык",
+    "LANGUAGES": {
+      "EN": "Английский",
+      "RU": "Русский"
+    },
+    "LOGOUT": "Выйти"
+  },
+  "AUTH": {
+    "USERNAME": "Логин",
+    "NAME": "Имя",
+    "PASSWORD": "Пароль",
+    "USERNAME_PLACEHOLDER": "Введите логин",
+    "NAME_PLACEHOLDER": "Введите имя",
+    "PASSWORD_PLACEHOLDER": "Введите пароль"
+  },
+  "LOGIN": {
+    "PAGE_HEADER": "Войти"
+  },
+  "PROFILE": {
+    "PAGE_HEADER": "Профиль"
+  },
+  "SIGNUP": {
+    "PAGE_HEADER": "Регистрация"
+  },
+  "CAT_ADD": {
+    "PAGE_HEADER_ADD": "Добавить категорию",
+    "PAGE_HEADER_UPD": "Обновить категорию",
+    "TITLE": "Название",
+    "TITLE_PLACEHOLDER": "Введите название",
+    "DESCRIPTION": "Описание (опционально)",
+    "DESCRIPTION_PLACEHOLDER": "Введите описание"
+  },
+  "CAT_LIST": {
+    "PAGE_HEADER": "Категории",
+    "TITLE": "Название",
+    "ACTION": "Действие",
+    "TOTAL": "Всего: ",
+    "NO_CATEGORIES": "Нет категорий"
+  },
+  "POLL_ADD": {
+    "PAGE_HEADER_ADD": "Добавить опрос",
+    "PAGE_HEADER_UPD": "Обновить опрос",
+    "TITLE": "Название",
+    "DESCRIPTION": "Описание (опционально)",
+    "CATEGORY": "Категория",
+    "QUESTION": "Вопрос",
+    "CHOICE": "Вариант",
+    "REMOVE_QUESTION_BTN": "Удалить вопрос",
+    "ADD_QUESTION_BTN": "Добавить вопрос"
+  },
+  "POLL_DET": {
+    "DESCRIPTION": "Описание",
+    "CATEGORY": "Категория",
+    "CREATED": "Создан",
+    "UPDATED": "Обновлен",
+    "QUESTIONS": "Вопросы",
+    "QUESTION": "Вопрос"
+  },
+  "POLL_LIST": {
+    "PAGE_HEADER": "Опросы",
+    "TOTAL": "Всего: ",
+    "NO_POLLS": "Нет опросов",
+    "CAT_FILTER": "Фильтр по категории",
+    "TITLE": "Название",
+    "ACTION": "Действие",
+    "STOP_POLL_BTN": "Завершить",
+    "RESULT_FOR": "Результат для",
+    "NO_ACTIVE_POLLS": "Нет активных опросов"
+  },
+  "RESULT_DET": {
+    "ANSWER": "Ответ",
+    "COUNT": "Количество"
+  },
+  "RESULT_LIST": {
+    "PAGE_HEADER": "Результаты",
+    "TITLE": "Название",
+    "DATE": "Дата",
+    "ACTION": "Действие",
+    "TOTAL": "Всего: ",
+    "NO_RESULTS": "Нет результатов"
+  },
+  "ROOM": {
+    "PAGE_HEADER": "Комната",
+    "LEAVE_ROOM": "Покинуть комнату"
+  },
+  "ROOM_LIST": {
+    "PAGE_HEADER": "Комнаты",
+    "ROOM": "Комната",
+    "ACTION": "Действие"
+  },
+  "USER_ADD": {
+    "PAGE_HEADER_ADD": "Добавить пользователя",
+    "PAGE_HEADER_UPD": "Обновить пользователя",
+    "ADMIN": "Администратор"
+  },
+  "USER_LIST": {
+    "PAGE_HEADER": "Пользователи",
+    "USERNAME": "Логин",
+    "ROLE": "Роль",
+    "CREATED": "Создан",
+    "ACTION": "Действие",
+    "TOTAL": "Всего: "
+  },
+  "BUTTONS": {
+    "SAVE": "Сохранить",
+    "SUBMIT": "Отправить",
+    "EDIT": "Изменить",
+    "REMOVE": "Удалить",
+    "LOGIN": "Войти",
+    "SIGNUP": "Регистрация",
+    "RESET": "Сброс",
+    "BACK": "Назад",
+    "ENTER": "Войти"
+  }
 }

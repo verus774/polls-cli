@@ -48,7 +48,7 @@
     "QUESTION": "Question",
     "CHOICE": "Choice",
     "REMOVE_QUESTION_BTN": "Remove question",
-    "ADD_QUESTION_BTN": "Remove question"
+    "ADD_QUESTION_BTN": "Add question"
   },
   "POLL_DET": {
     "DESCRIPTION": "Description",
