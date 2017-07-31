@@ -19,7 +19,8 @@
     "PAGE_HEADER": "Войти"
   },
   "PROFILE": {
-    "PAGE_HEADER": "Профиль"
+    "PAGE_HEADER": "Профиль",
+    "NOTIFICATION_UPDATED": "Профиль обновлен"
   },
   "SIGNUP": {
     "PAGE_HEADER": "Регистрация"
@@ -30,14 +31,19 @@
     "TITLE": "Название",
     "TITLE_PLACEHOLDER": "Введите название",
     "DESCRIPTION": "Описание (опционально)",
-    "DESCRIPTION_PLACEHOLDER": "Введите описание"
+    "DESCRIPTION_PLACEHOLDER": "Введите описание",
+    "NOTIFICATION_TITLE": "Категории",
+    "NOTIFICATION_UPDATED": "Категория обновлена",
+    "NOTIFICATION_ADDED": "Категория добавлена"
   },
   "CAT_LIST": {
     "PAGE_HEADER": "Категории",
     "TITLE": "Название",
     "ACTION": "Действие",
     "TOTAL": "Всего: ",
-    "NO_CATEGORIES": "Нет категорий"
+    "NO_CATEGORIES": "Нет категорий",
+    "NOTIFICATION_TITLE": "Категории",
+    "NOTIFICATION_DELETED": "Категория удалена"
   },
   "POLL_ADD": {
     "PAGE_HEADER_ADD": "Добавить опрос",
@@ -48,7 +54,10 @@
     "QUESTION": "Вопрос",
     "CHOICE": "Вариант",
     "REMOVE_QUESTION_BTN": "Удалить вопрос",
-    "ADD_QUESTION_BTN": "Добавить вопрос"
+    "ADD_QUESTION_BTN": "Добавить вопрос",
+    "NOTIFICATION_TITLE": "Опросы",
+    "NOTIFICATION_UPDATED": "Опрос обновлен",
+    "NOTIFICATION_ADDED": "Опрос добавлен"
   },
   "POLL_DET": {
     "DESCRIPTION": "Описание",
@@ -67,7 +76,9 @@
     "ACTION": "Действие",
     "STOP_POLL_BTN": "Завершить",
     "RESULT_FOR": "Результат для",
-    "NO_ACTIVE_POLLS": "Нет активных опросов"
+    "NO_ACTIVE_POLLS": "Нет активных опросов",
+    "NOTIFICATION_TITLE": "Опросы",
+    "NOTIFICATION_DELETED": "Опрос удален"
   },
   "RESULT_DET": {
     "ANSWER": "Ответ",
@@ -79,7 +90,9 @@
     "DATE": "Дата",
     "ACTION": "Действие",
     "TOTAL": "Всего: ",
-    "NO_RESULTS": "Нет результатов"
+    "NO_RESULTS": "Нет результатов",
+    "NOTIFICATION_TITLE": "Результаты",
+    "NOTIFICATION_DELETED": "Результат удален"
   },
   "ROOM": {
     "PAGE_HEADER": "Комната",
@@ -93,7 +106,10 @@
   "USER_ADD": {
     "PAGE_HEADER_ADD": "Добавить пользователя",
     "PAGE_HEADER_UPD": "Обновить пользователя",
-    "ADMIN": "Администратор"
+    "ADMIN": "Администратор",
+    "NOTIFICATION_TITLE": "Пользователи",
+    "NOTIFICATION_UPDATED": "Пользователь обновлен",
+    "NOTIFICATION_ADDED": "Пользователь добавлен"
   },
   "USER_LIST": {
     "PAGE_HEADER": "Пользователи",
@@ -101,7 +117,9 @@
     "ROLE": "Роль",
     "CREATED": "Создан",
     "ACTION": "Действие",
-    "TOTAL": "Всего: "
+    "TOTAL": "Всего: ",
+    "NOTIFICATION_TITLE": "Пользователи",
+    "NOTIFICATION_DELETED": "Пользователь удален"
   },
   "BUTTONS": {
     "SAVE": "Сохранить",
@@ -113,5 +131,9 @@
     "RESET": "Сброс",
     "BACK": "Назад",
     "ENTER": "Войти"
+  },
+  "NOTIFICATION_ERR": {
+    "TITLE": "Ошибка",
+    "CONTENT": "Сбой"
   }
 }

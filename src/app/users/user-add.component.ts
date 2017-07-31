@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {IUser} from './user';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'user-add.component.html'
@@ -19,6 +20,7 @@ export class UserAddComponent implements OnInit {
   constructor(private _api: ApiService,
               private _router: Router,
               private _route: ActivatedRoute,
+              private _translate: TranslateService,
               private _notificationsService: NotificationsService) {
   }
 
@@ -34,17 +36,29 @@ export class UserAddComponent implements OnInit {
       this._api.put(`users/${this.id}`, this.user).subscribe(
         () => {
           this._router.navigate(['/users']);
-          this._notificationsService.success('Users', 'User updated');
+          this._notificationsService.success(
+            this._translate.instant('USER_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('USER_ADD.NOTIFICATION_UPDATED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     } else {
       this._api.post('users', this.user).subscribe(
         () => {
           this._router.navigate(['/users']);
-          this._notificationsService.success('Users', 'User added');
+          this._notificationsService.success(
+            this._translate.instant('USER_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('USER_ADD.NOTIFICATION_ADDED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     }
   }

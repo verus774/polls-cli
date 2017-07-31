@@ -6,6 +6,7 @@ import {AuthService} from '../shared/auth.service';
 import {SocketService} from '../shared/socket.service';
 import {ApiService} from '../shared/api.service';
 import {ICategory} from '../categories/category';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'poll-list.component.html',
@@ -24,6 +25,7 @@ export class PollListComponent implements OnInit {
               public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService,
               private _authService: AuthService,
+              private _translate: TranslateService,
               private _socket: SocketService) {
   }
 
@@ -58,7 +60,10 @@ export class PollListComponent implements OnInit {
     });
 
     this._socket.on('error').subscribe(() => {
-      this._notificationsService.error('Error', 'Fail');
+      this._notificationsService.error(
+        this._translate.instant('NOTIFICATION_ERR.TITLE'),
+        this._translate.instant('NOTIFICATION_ERR.CONTENT')
+      );
     });
 
   }
@@ -93,10 +98,16 @@ export class PollListComponent implements OnInit {
           .then(() => {
             this._api.delete(`polls/${id}`).subscribe(
               () => {
-                this._notificationsService.success('Polls', 'Poll deleted');
+                this._notificationsService.success(
+                  this._translate.instant('POLL_LIST.NOTIFICATION_TITLE'),
+                  this._translate.instant('POLL_LIST.NOTIFICATION_DELETED')
+                );
                 this.getPolls();
               },
-              () => this._notificationsService.error('Error', 'Fail')
+              () => this._notificationsService.error(
+                this._translate.instant('NOTIFICATION_ERR.TITLE'),
+                this._translate.instant('NOTIFICATION_ERR.CONTENT')
+              )
             );
           });
       });

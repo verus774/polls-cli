@@ -3,6 +3,7 @@ import {ICategory} from './category';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'category-list.component.html',
@@ -15,6 +16,7 @@ export class CategoryListComponent implements OnInit {
   constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,
+              private _translate: TranslateService,
               private _notificationsService: NotificationsService) {
   }
 
@@ -38,10 +40,16 @@ export class CategoryListComponent implements OnInit {
           .then(() => {
             this._api.delete(`categories/${id}`).subscribe(
               () => {
-                this._notificationsService.success('Categories', 'Category deleted');
+                this._notificationsService.success(
+                  this._translate.instant('CAT_LIST.NOTIFICATION_TITLE'),
+                  this._translate.instant('CAT_LIST.NOTIFICATION_DELETED')
+                );
                 this.getCategories();
               },
-              () => this._notificationsService.error('Error', 'Fail')
+              () => this._notificationsService.error(
+                this._translate.instant('NOTIFICATION_ERR.TITLE'),
+                this._translate.instant('NOTIFICATION_ERR.CONTENT')
+              )
             );
           });
       });

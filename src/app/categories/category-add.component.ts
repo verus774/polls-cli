@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
 import {ICategory} from './category';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class CategoryAddComponent implements OnInit {
   constructor(private _api: ApiService,
               private _router: Router,
               private _route: ActivatedRoute,
+              private _translate: TranslateService,
               private _notificationsService: NotificationsService) {
   }
 
@@ -27,17 +29,29 @@ export class CategoryAddComponent implements OnInit {
       this._api.put(`categories/${this.id}`, this.category).subscribe(
         () => {
           this._router.navigate(['/categories']);
-          this._notificationsService.success('Categories', 'Category updated');
+          this._notificationsService.success(
+            this._translate.instant('CAT_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('CAT_ADD.NOTIFICATION_UPDATED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     } else {
       this._api.post('categories', this.category).subscribe(
         () => {
           this._router.navigate(['/categories']);
-          this._notificationsService.success('Categories', 'Category added');
+          this._notificationsService.success(
+            this._translate.instant('CAT_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('CAT_ADD.NOTIFICATION_ADDED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     }
   }

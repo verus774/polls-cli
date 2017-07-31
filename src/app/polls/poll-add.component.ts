@@ -4,6 +4,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {ICategory} from '../categories/category';
 import {ApiService} from '../shared/api.service';
 import {NgForm} from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class PollAddComponent implements OnInit {
   constructor(private _api: ApiService,
               private _router: Router,
               private _route: ActivatedRoute,
+              private _translate: TranslateService,
               private _notificationsService: NotificationsService) {
   }
 
@@ -56,17 +58,29 @@ export class PollAddComponent implements OnInit {
       this._api.put(`polls/${this.id}`, this.poll).subscribe(
         () => {
           this._router.navigate(['/polls']);
-          this._notificationsService.success('Polls', 'Poll updated');
+          this._notificationsService.success(
+            this._translate.instant('POLL_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('POLL_ADD.NOTIFICATION_UPDATED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     } else {
       this._api.post('polls', this.poll).subscribe(
         () => {
           this._router.navigate(['/polls']);
-          this._notificationsService.success('Polls', 'Poll added');
+          this._notificationsService.success(
+            this._translate.instant('POLL_ADD.NOTIFICATION_TITLE'),
+            this._translate.instant('POLL_ADD.NOTIFICATION_ADDED')
+          );
         },
-        () => this._notificationsService.error('Error', 'Fail')
+        () => this._notificationsService.error(
+          this._translate.instant('NOTIFICATION_ERR.TITLE'),
+          this._translate.instant('NOTIFICATION_ERR.CONTENT')
+        )
       );
     }
   }
