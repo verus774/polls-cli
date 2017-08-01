@@ -1,19 +1,17 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ResultListComponent} from './result-list.component';
 import {ResultRoutingModule} from './result-routing.module';
 import {ResultDetailComponent} from './result-detail.component';
 import {ResultResolver} from './result-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
-import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     NgPipesModule,
-    ResultRoutingModule,
-    TranslateModule
+    ResultRoutingModule
   ],
   declarations: [
     ResultListComponent,

@@ -3,20 +3,18 @@ import {PollRoutingModule} from './poll-routing.module';
 import {PollListComponent} from './poll-list.component';
 import {PollDetailComponent} from './poll-detail.component';
 import {PollAddComponent} from './poll-add.component';
-import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {PollResolver} from './poll-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
-import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     FormsModule,
     NgPipesModule,
-    PollRoutingModule,
-    TranslateModule
+    PollRoutingModule
   ],
   declarations: [
     PollListComponent,
