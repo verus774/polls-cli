@@ -23,6 +23,7 @@ import {AdminGuard} from './shared/guards/admin-guard.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {LocalSettingsService} from './shared/local-settings.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     AuthenticatedGuard,
     AdminGuard,
-    SocketService
+    SocketService,
+    LocalSettingsService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {ApiService} from '../shared/api.service';
 import {RequestMethod} from '@angular/http';
 import {environment} from '../../environments/environment';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {NgForm} from '@angular/forms';
 
 
