@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
 import {ApiService} from '../shared/api.service';
-import {RequestMethod} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {NotificationsService} from 'angular2-notifications';
 import {NgForm} from '@angular/forms';
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    this._api.request(`${this._authUrl}/login`, RequestMethod.Post, form.value)
+    this._api.request(`${this._authUrl}/login`, 'POST', form.value)
       .subscribe(
         res => this._router.navigate(['/polls']),
         err => {

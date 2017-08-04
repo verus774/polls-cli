@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../shared/api.service';
 import {environment} from '../../environments/environment';
-import {RequestMethod} from '@angular/http';
 import {NgForm} from '@angular/forms';
 
 
@@ -28,7 +27,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    this._api.request(`${this._authUrl}/signup`, RequestMethod.Post, form.value)
+    this._api.request(`${this._authUrl}/signup`, 'POST', form.value)
       .subscribe(
         res => this._router.navigate(['/polls']),
         err => {

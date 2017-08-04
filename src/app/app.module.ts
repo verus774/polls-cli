@@ -22,8 +22,9 @@ import {UserModule} from './users/user.module';
 import {AdminGuard} from './shared/guards/admin-guard.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {LocalSettingsService} from './shared/local-settings.service';
+import {TokenInterceptor} from './shared/token.interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -63,7 +64,12 @@ export function createTranslateLoader(http: HttpClient) {
     AuthenticatedGuard,
     AdminGuard,
     SocketService,
-    LocalSettingsService
+    LocalSettingsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
