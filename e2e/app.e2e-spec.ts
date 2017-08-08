@@ -1,10 +1,10 @@
-import { PollsCliPage } from './app.po';
+import {PollsNgxPage} from './app.po';
 
-describe('polls-cli App', () => {
-  let page: PollsCliPage;
+describe('polls-ngx App', () => {
+  let page: PollsNgxPage;
 
   beforeEach(() => {
-    page = new PollsCliPage();
+    page = new PollsNgxPage();
   });
 
   it('should display message saying app works', () => {
