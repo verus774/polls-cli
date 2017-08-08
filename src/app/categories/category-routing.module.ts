@@ -3,10 +3,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {CategoryListComponent} from './category-list.component';
 import {AuthenticatedGuard} from '../shared/guards/authenticated-guard.service';
 import {CategoryAddComponent} from './category-add.component';
+import {CategoryResolver} from './category-resolver.service';
 
 const categoryRoutes: Routes = [
   {path: 'categories', component: CategoryListComponent, canActivate: [AuthenticatedGuard]},
-  {path: 'categories/:id/edit', component: CategoryAddComponent, canActivate: [AuthenticatedGuard]},
+  {
+    path: 'categories/:id/edit',
+    component: CategoryAddComponent,
+    canActivate: [AuthenticatedGuard],
+    resolve: {category: CategoryResolver}
+  },
   {path: 'add-category', component: CategoryAddComponent, canActivate: [AuthenticatedGuard]}
 ];
 

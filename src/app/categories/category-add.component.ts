@@ -11,7 +11,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class CategoryAddComponent implements OnInit {
-  id: string;
   category: ICategory = {
     title: '',
     description: ''
@@ -25,8 +24,8 @@ export class CategoryAddComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.id) {
-      this._api.put(`categories/${this.id}`, this.category).subscribe(
+    if (this.category._id) {
+      this._api.put(`categories/${this.category._id}`, this.category).subscribe(
         () => {
           this._router.navigate(['/categories']);
           this._notificationsService.success(
@@ -57,10 +56,9 @@ export class CategoryAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this._route.snapshot.paramMap.get('id');
-
-    if (this.id) {
-      this._api.get(`categories/${this.id}`).subscribe(category => this.category = category);
+    const category = this._route.snapshot.data['category'];
+    if (category) {
+      this.category = category;
     }
   }
 

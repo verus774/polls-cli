@@ -10,7 +10,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class UserAddComponent implements OnInit {
-  id: string;
   user: IUser = {
     name: '',
     username: '',
@@ -25,15 +24,15 @@ export class UserAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this._route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this._api.get(`users/${this.id}`).subscribe(user => this.user = user);
+    const user = this._route.snapshot.data['user'];
+    if (user) {
+      this.user = user;
     }
   }
 
   onSubmit(): void {
-    if (this.id) {
-      this._api.put(`users/${this.id}`, this.user).subscribe(
+    if (this.user._id) {
+      this._api.put(`users/${this.user._id}`, this.user).subscribe(
         () => {
           this._router.navigate(['/users']);
           this._notificationsService.success(

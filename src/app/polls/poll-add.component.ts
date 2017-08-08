@@ -12,7 +12,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class PollAddComponent implements OnInit {
-  id: string;
   poll: any = {
     title: '',
     category: {
@@ -54,8 +53,8 @@ export class PollAddComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.id) {
-      this._api.put(`polls/${this.id}`, this.poll).subscribe(
+    if (this.poll._id) {
+      this._api.put(`polls/${this.poll._id}`, this.poll).subscribe(
         () => {
           this._router.navigate(['/polls']);
           this._notificationsService.success(
@@ -88,9 +87,9 @@ export class PollAddComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
 
-    this.id = this._route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this._api.get(`polls/${this.id}`).subscribe(poll => this.poll = poll);
+    const poll = this._route.snapshot.data['poll'];
+    if (poll) {
+      this.poll = poll;
     }
   }
 

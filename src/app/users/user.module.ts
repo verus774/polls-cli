@@ -6,6 +6,7 @@ import {UserListComponent} from './user-list.component';
 import {ApiService} from '../shared/api.service';
 import {UserAddComponent} from './user-add.component';
 import {SharedModule} from '../shared/shared.module';
+import {UserResolver} from './user-resolver.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {SharedModule} from '../shared/shared.module';
     UserAddComponent
   ],
   providers: [
-    ApiService
+    ApiService,
+    UserResolver
   ]
 })
 

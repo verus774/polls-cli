@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
+import {CategoryResolver} from './category-resolver.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {SharedModule} from '../shared/shared.module';
     CategoryAddComponent
   ],
   providers: [
-    ApiService
+    ApiService,
+    CategoryResolver
   ]
 })
 
