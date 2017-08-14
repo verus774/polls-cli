@@ -7,13 +7,15 @@ import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
 import {CategoryResolver} from './category-resolver.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
     SharedModule,
     FormsModule,
     NgPipesModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     CategoryListComponent,

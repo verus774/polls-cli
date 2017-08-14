@@ -6,12 +6,14 @@ import {ResultResolver} from './result-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
     SharedModule,
     NgPipesModule,
-    ResultRoutingModule
+    ResultRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     ResultListComponent,

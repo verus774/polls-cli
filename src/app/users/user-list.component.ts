@@ -13,6 +13,9 @@ import {TranslateService} from '@ngx-translate/core';
 export class UserListComponent implements OnInit {
   users: IUser[];
 
+  currentPage = 1;
+  itemsPerPage = 10;
+
   constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,

@@ -11,6 +11,9 @@ import {ApiService} from '../shared/api.service';
 export class RoomListComponent implements OnInit {
   rooms: IRoom[];
 
+  currentPage = 1;
+  itemsPerPage = 10;
+
   constructor(private _roomService: RoomService,
               private _api: ApiService,
               private _router: Router,

@@ -56,8 +56,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let poll of polls | orderBy: 'title' | filterBy: ['category._id']: currCategoryId"
-            [ngClass]="{'list-group-item-success': poll.active}">
+        <tr *ngFor="let poll of polls
+          | orderBy: 'title'
+          | filterBy: ['category._id']: currCategoryId
+          | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+            [ngClass]="{'list-group-item-success': poll.active}"
+        >
           <td><a [routerLink]="['/polls', poll._id]">{{ poll.title }}</a></td>
           <td>
             <div class="btn-group">
@@ -83,6 +87,8 @@
         </tbody>
       </table>
     </div>
+
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
   </div>
 </div>

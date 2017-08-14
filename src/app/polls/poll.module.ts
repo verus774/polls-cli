@@ -8,13 +8,15 @@ import {PollResolver} from './poll-resolver.service';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
     SharedModule,
     FormsModule,
     NgPipesModule,
-    PollRoutingModule
+    PollRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     PollListComponent,

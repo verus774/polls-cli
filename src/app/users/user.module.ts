@@ -7,13 +7,15 @@ import {ApiService} from '../shared/api.service';
 import {UserAddComponent} from './user-add.component';
 import {SharedModule} from '../shared/shared.module';
 import {UserResolver} from './user-resolver.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
     SharedModule,
     FormsModule,
     NgPipesModule,
-    UserRoutingModule
+    UserRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     UserListComponent,

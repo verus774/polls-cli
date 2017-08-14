@@ -18,7 +18,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let result of results | orderBy: '-createdAt'">
+          <tr *ngFor="let result of results
+            | orderBy: '-createdAt'
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+          >
             <td><a [routerLink]="['/results', result._id]">{{ result.poll?.title }}</a></td>
             <td>{{ result?.createdAt | date:"dd.MM.yyyy '-' HH:mm" }}</td>
             <td>
@@ -29,6 +32,8 @@
           </tbody>
         </table>
       </div>
+
+      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
     </div>
   </div>

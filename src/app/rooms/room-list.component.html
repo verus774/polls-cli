@@ -11,7 +11,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let room of rooms | orderBy: 'name'">
+      <tr *ngFor="let room of rooms
+        | orderBy: 'name'
+        | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+      >
         <td>{{ room.name }}</td>
         <td>
           <!--<a class="btn btn-success" [routerLink]="['/rooms', room._id]">Enter</a>-->
@@ -20,5 +23,8 @@
       </tr>
       </tbody>
     </table>
+
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
   </div>
 </div>

@@ -21,7 +21,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let category of categories | orderBy: 'title'">
+          <tr *ngFor="let category of categories
+            | orderBy: 'title'
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+          >
             <td>{{ category.title }}</td>
             <td>
               <a class="btn btn-warning" [routerLink]="[category._id, 'edit']">{{'BUTTONS.EDIT' | translate}}</a>
@@ -32,6 +35,8 @@
           </tbody>
         </table>
       </div>
+
+      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
     </div>
   </div>

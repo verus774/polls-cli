@@ -20,6 +20,9 @@ export class PollListComponent implements OnInit {
   activePoll: IPoll;
   answers: any[] = [];
 
+  currentPage = 1;
+  itemsPerPage = 10;
+
   constructor(private _api: ApiService,
               public modal: Modal,
               public vcRef: ViewContainerRef,

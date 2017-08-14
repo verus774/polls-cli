@@ -22,7 +22,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of users | orderBy: 'username'">
+          <tr *ngFor="let user of users
+            | orderBy: 'username'
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+          >
             <td>{{ user.username }}</td>
             <td>{{ user.role }}</td>
             <td>{{ user.createdAt | date: "dd.MM.yyyy" }}</td>
@@ -35,6 +38,8 @@
         </table>
       </div>
     </div>
+
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
   </div>
 </div>
