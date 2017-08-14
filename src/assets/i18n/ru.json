@@ -102,7 +102,9 @@
   },
   "ROOM": {
     "PAGE_HEADER": "Комната",
-    "LEAVE_ROOM": "Покинуть комнату"
+    "LEAVE_ROOM": "Покинуть комнату",
+    "NOTIFICATION_SUBMITTED_TITLE": "Ответы",
+    "NOTIFICATION_SUBMITTED": "Ответы отправлены"
   },
   "ROOM_LIST": {
     "PAGE_HEADER": "Комнаты",

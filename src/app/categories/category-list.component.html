@@ -11,7 +11,7 @@
     <h4>{{ categories ? (('CAT_LIST.TOTAL' | translate) + categories.length) : ('CAT_LIST.NO_CATEGORIES' | translate)
       }}</h4>
 
-    <div>
+    <div class="row" *ngIf="categories">
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>

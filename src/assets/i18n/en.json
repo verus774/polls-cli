@@ -102,7 +102,9 @@
   },
   "ROOM": {
     "PAGE_HEADER": "Room",
-    "LEAVE_ROOM": "Leave room"
+    "LEAVE_ROOM": "Leave room",
+    "NOTIFICATION_SUBMITTED_TITLE": "Answers",
+    "NOTIFICATION_SUBMITTED": "Answers submitted"
   },
   "ROOM_LIST": {
     "PAGE_HEADER": "Rooms",

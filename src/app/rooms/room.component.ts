@@ -5,6 +5,8 @@ import {SocketService} from '../shared/socket.service';
 import {IPoll} from '../polls/poll';
 import {Location} from '@angular/common';
 import {ApiService} from '../shared/api.service';
+import {NotificationsService} from 'angular2-notifications';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -18,7 +20,9 @@ export class RoomComponent implements OnInit {
   constructor(private _location: Location,
               private _roomService: RoomService,
               private _socket: SocketService,
-              private _api: ApiService) {
+              private _api: ApiService,
+              private _translate: TranslateService,
+              private _notificationsService: NotificationsService) {
   }
 
   ngOnInit(): void {
@@ -42,7 +46,7 @@ export class RoomComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const answers = {answers: []};
+    let answers = {answers: []};
 
     for (const question of this.activePoll.questions) {
       answers.answers.push({id: question._id, answer: question.answer});
@@ -50,7 +54,16 @@ export class RoomComponent implements OnInit {
 
     this._socket.emit('answers', answers);
 
+    answers = null;
+    this.activePoll = null;
+
+    this._location.back();
+    this._notificationsService.success(
+      this._translate.instant('ROOM.NOTIFICATION_SUBMITTED_TITLE'),
+      this._translate.instant('ROOM.NOTIFICATION_SUBMITTED')
+    );
   }
+
 
   trackByFn(index, item) {
     return index;
