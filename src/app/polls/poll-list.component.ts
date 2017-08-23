@@ -7,6 +7,7 @@ import {SocketService} from '../shared/socket.service';
 import {ApiService} from '../shared/api.service';
 import {ICategory} from '../categories/category';
 import {TranslateService} from '@ngx-translate/core';
+import {RoomService} from '../rooms/room.service';
 
 @Component({
   templateUrl: 'poll-list.component.html',
@@ -18,7 +19,6 @@ export class PollListComponent implements OnInit {
   categories: ICategory[];
   currCategoryId: string;
   activePoll: IPoll;
-  answers: any[] = [];
 
   currentPage = 1;
   itemsPerPage = 10;
@@ -28,6 +28,7 @@ export class PollListComponent implements OnInit {
               public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService,
               private _authService: AuthService,
+              private _roomService: RoomService,
               private _translate: TranslateService,
               private _socket: SocketService) {
   }
@@ -35,6 +36,7 @@ export class PollListComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getPolls();
+    this.getActivePoll();
 
     this._socket.on('startPoll').subscribe((data) => {
       this.activePoll = data;
@@ -53,12 +55,6 @@ export class PollListComponent implements OnInit {
         if (data._id === poll._id) {
           poll.active = false;
         }
-      }
-    });
-
-    this._socket.on('answers').subscribe((data) => {
-      for (const answer of data.answers) {
-        this.answers.push(answer);
       }
     });
 
@@ -83,6 +79,12 @@ export class PollListComponent implements OnInit {
       this._socket.emit('joinRoom', this._authService.getUser()._id);
     });
 
+  }
+
+  getActivePoll(): void {
+    this._api.get(`active-poll?room=${this._roomService.getCurrentRoom()._id}`).subscribe(activePoll => {
+      this.activePoll = activePoll;
+    });
   }
 
   getCategories(): void {
