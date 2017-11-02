@@ -15,6 +15,7 @@ export class CategoryListComponent implements OnInit {
 
   currentPage = 1;
   itemsPerPage = 10;
+  totalItems = 0;
 
   constructor(private _api: ApiService,
               public modal: Modal,
@@ -27,8 +28,13 @@ export class CategoryListComponent implements OnInit {
     this.getCategories();
   }
 
-  private getCategories(): void {
-    this._api.get('categories').subscribe(categories => this.categories = categories);
+  getCategories(page = this.currentPage): void {
+    this._api.get(`categories?page=${page}&limit=${this.itemsPerPage}`)
+      .subscribe(res => {
+        this.categories = res.data;
+        this.totalItems = res.meta.paging.total;
+        this.currentPage = page;
+      });
   }
 
   removeCategory(id: string): void {

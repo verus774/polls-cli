@@ -40,12 +40,11 @@ export class ApiService {
     }
 
     return this._http.request(method, url, requestOptions)
-      .map((res: any) => res.data)
-      .map((data: any) => {
-        if (data && data.token) {
-          this._authService.setToken(data.token);
+      .map((res: any) => {
+        if (res.data && res.data.token) {
+          this._authService.setToken(res.data.token);
         }
-        return data;
+        return res;
       })
       .catch((res: Response) => this.onRequestError(res));
   }

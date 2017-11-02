@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 
-    <h4>{{ categories ? (('CAT_LIST.TOTAL' | translate) + categories.length) : ('CAT_LIST.NO_CATEGORIES' | translate)
+    <h4>{{ totalItems ? (('CAT_LIST.TOTAL' | translate) + totalItems) : ('CAT_LIST.NO_CATEGORIES' | translate)
       }}</h4>
 
     <div class="row" *ngIf="categories">
@@ -23,7 +23,7 @@
           <tbody>
           <tr *ngFor="let category of categories
             | orderBy: 'title'
-            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
           >
             <td>{{ category.title }}</td>
             <td>
@@ -36,7 +36,7 @@
         </table>
       </div>
 
-      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      <pagination-controls (pageChange)="getCategories($event)"></pagination-controls>
 
     </div>
   </div>

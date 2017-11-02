@@ -15,6 +15,7 @@ export class ResultListComponent implements OnInit {
 
   currentPage = 1;
   itemsPerPage = 10;
+  totalItems = 0;
 
   constructor(private _api: ApiService,
               public modal: Modal,
@@ -27,8 +28,13 @@ export class ResultListComponent implements OnInit {
     this.getResults();
   }
 
-  private getResults(): void {
-    this._api.get('results').subscribe(results => this.results = results);
+  getResults(page = this.currentPage): void {
+    this._api.get(`results?page=${page}&limit=${this.itemsPerPage}`)
+      .subscribe(res => {
+        this.results = res.data;
+        this.totalItems = res.meta.paging.total;
+        this.currentPage = page;
+      });
   }
 
   removeResult(id: string): void {

@@ -94,7 +94,7 @@ export class PollAddComponent implements OnInit {
   }
 
   private getCategories(): void {
-    this._api.get('categories').subscribe(categories => this.categories = categories);
+    this._api.get('categories').map((res: any) => res.data).subscribe(categories => this.categories = categories);
   }
 
   onReset(form: NgForm): void {

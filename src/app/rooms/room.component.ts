@@ -28,7 +28,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.currentRoom = this._roomService.getCurrentRoom();
 
-    this._api.get(`active-poll?room=${this.currentRoom._id}`)
+    this._api.get(`active-poll?room=${this.currentRoom._id}`).map((res: any) => res.data)
       .subscribe(activePoll => this.activePoll = activePoll);
 
     this._socket.on('startPoll').subscribe((data) => {

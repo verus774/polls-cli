@@ -15,6 +15,7 @@ export class UserListComponent implements OnInit {
 
   currentPage = 1;
   itemsPerPage = 10;
+  totalItems = 0;
 
   constructor(private _api: ApiService,
               public modal: Modal,
@@ -27,8 +28,13 @@ export class UserListComponent implements OnInit {
     this.getUsers();
   }
 
-  private getUsers(): void {
-    this._api.get('users').subscribe(users => this.users = users);
+  getUsers(page = this.currentPage): void {
+    this._api.get(`users?page=${page}&limit=${this.itemsPerPage}`)
+      .subscribe(res => {
+        this.users = res.data;
+        this.totalItems = res.meta.paging.total;
+        this.currentPage = page;
+      });
   }
 
   removeUser(id: string): void {

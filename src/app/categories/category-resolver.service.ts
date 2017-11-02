@@ -11,6 +11,6 @@ export class CategoryResolver implements Resolve<ICategory> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICategory> {
     const id = route.params['id'];
-    return this._api.get(`categories/${id}`);
+    return this._api.get(`categories/${id}`).map((res: any) => res.data);
   }
 }

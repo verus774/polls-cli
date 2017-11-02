@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 
-    <h4>{{ polls ? (('POLL_LIST.TOTAL' | translate) + polls.length) : ('POLL_LIST.NO_POLLS' | translate) }}</h4>
+    <h4>{{ totalItems ? (('POLL_LIST.TOTAL' | translate) + totalItems) : ('POLL_LIST.NO_POLLS' | translate) }}</h4>
 
     <form class="form-inline text-center" *ngIf="categories?.length > 1">
       <div class="form-group">
@@ -59,7 +59,7 @@
         <tr *ngFor="let poll of polls
           | orderBy: 'title'
           | filterBy: ['category._id']: currCategoryId
-          | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+          | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
             [ngClass]="{'list-group-item-success': poll.active}"
         >
           <td><a [routerLink]="['/polls', poll._id]">{{ poll.title }}</a></td>
@@ -88,7 +88,7 @@
       </table>
     </div>
 
-    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <pagination-controls (pageChange)="getPolls($event)"></pagination-controls>
 
   </div>
 </div>

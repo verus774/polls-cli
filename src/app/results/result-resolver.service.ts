@@ -11,6 +11,6 @@ export class ResultResolver implements Resolve<IResult> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IResult> {
     const id = route.params['id'];
-    return this._api.get(`results/${id}`);
+    return this._api.get(`results/${id}`).map((res: any) => res.data);
   }
 }

@@ -11,6 +11,6 @@ export class PollResolver implements Resolve<IPoll> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPoll> {
     const id = route.params['id'];
-    return this._api.get(`polls/${id}`);
+    return this._api.get(`polls/${id}`).map((res: any) => res.data);
   }
 }

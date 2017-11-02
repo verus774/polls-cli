@@ -11,6 +11,6 @@ export class UserResolver implements Resolve<IUser> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IUser> {
     const id = route.params['id'];
-    return this._api.get(`users/${id}`);
+    return this._api.get(`users/${id}`).map((res: any) => res.data);
   }
 }

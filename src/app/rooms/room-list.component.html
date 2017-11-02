@@ -13,7 +13,7 @@
       <tbody>
       <tr *ngFor="let room of rooms
         | orderBy: 'name'
-        | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+        | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
       >
         <td>{{ room.name }}</td>
         <td>
@@ -24,7 +24,7 @@
       </tbody>
     </table>
 
-    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <pagination-controls (pageChange)="getRooms($event)"></pagination-controls>
 
   </div>
 </div>

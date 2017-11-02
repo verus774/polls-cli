@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 
-    <h4>{{'USER_LIST.TOTAL' | translate}} {{users?.length}}</h4>
+    <h4>{{'USER_LIST.TOTAL' | translate}} {{totalItems}}</h4>
 
     <div>
       <div class="table-responsive">
@@ -24,7 +24,7 @@
           <tbody>
           <tr *ngFor="let user of users
             | orderBy: 'username'
-            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
           >
             <td>{{ user.username }}</td>
             <td>{{ user.role }}</td>
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <pagination-controls (pageChange)="getUsers($event)"></pagination-controls>
 
   </div>
 </div>

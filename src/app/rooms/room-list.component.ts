@@ -13,6 +13,7 @@ export class RoomListComponent implements OnInit {
 
   currentPage = 1;
   itemsPerPage = 10;
+  totalItems = 0;
 
   constructor(private _roomService: RoomService,
               private _api: ApiService,
@@ -22,7 +23,16 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._api.get('rooms').subscribe(rooms => this.rooms = rooms);
+    this.getRooms();
+  }
+
+  getRooms(page = this.currentPage): void {
+    this._api.get(`rooms?page=${page}&limit=${this.itemsPerPage}`)
+      .subscribe(res => {
+        this.rooms = res.data;
+        this.totalItems = res.meta.paging.total;
+        this.currentPage = page;
+      });
   }
 
   joinRoom(room: IRoom): void {

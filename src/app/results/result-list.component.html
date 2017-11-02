@@ -4,7 +4,7 @@
       <h3>{{'RESULT_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
 
-    <h4>{{ results ? (('RESULT_LIST.TOTAL' | translate) + results.length) : ('RESULT_LIST.NO_RESULTS' | translate)
+    <h4>{{ totalItems ? (('RESULT_LIST.TOTAL' | translate) + totalItems) : ('RESULT_LIST.NO_RESULTS' | translate)
       }}</h4>
 
     <div *ngIf="results">
@@ -20,7 +20,7 @@
           <tbody>
           <tr *ngFor="let result of results
             | orderBy: '-createdAt'
-            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+            | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
           >
             <td><a [routerLink]="['/results', result._id]">{{ result.poll?.title }}</a></td>
             <td>{{ result?.createdAt | date:"dd.MM.yyyy '-' HH:mm" }}</td>
@@ -33,7 +33,7 @@
         </table>
       </div>
 
-      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      <pagination-controls (pageChange)="getResults($event)"></pagination-controls>
 
     </div>
   </div>

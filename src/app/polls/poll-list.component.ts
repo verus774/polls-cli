@@ -22,6 +22,7 @@ export class PollListComponent implements OnInit {
 
   currentPage = 1;
   itemsPerPage = 10;
+  totalItems = 0;
 
   constructor(private _api: ApiService,
               public modal: Modal,
@@ -37,6 +38,8 @@ export class PollListComponent implements OnInit {
     this.getCategories();
     this.getPolls();
     this.getActivePoll();
+
+    this._socket.emit('joinRoom', this._authService.getUser()._id);
 
     this._socket.on('startPoll').subscribe((data) => {
       this.activePoll = data;
@@ -67,28 +70,39 @@ export class PollListComponent implements OnInit {
 
   }
 
-  getPolls(): void {
-    this._api.get('polls').subscribe(polls => {
-      this.polls = polls;
+  /*getPolls(): void {
+    this._api.get('polls').map((res: any) => res.data)
+      .subscribe(polls => {
+        this.polls = polls;
 
-      for (const poll of polls) {
-        if (poll.active === true) {
-          this.activePoll = poll;
+        for (const poll of polls) {
+          if (poll.active === true) {
+            this.activePoll = poll;
+          }
         }
-      }
-      this._socket.emit('joinRoom', this._authService.getUser()._id);
-    });
+        this._socket.emit('joinRoom', this._authService.getUser()._id);
+      });
+  }*/
 
+  getPolls(page = this.currentPage): void {
+    this._api.get(`polls?page=${page}&limit=${this.itemsPerPage}`)
+      .subscribe(res => {
+        this.polls = res.data;
+        this.totalItems = res.meta.paging.total;
+        this.currentPage = page;
+      });
   }
 
   getActivePoll(): void {
-    this._api.get(`active-poll?room=${this._roomService.getCurrentRoom()._id}`).subscribe(activePoll => {
-      this.activePoll = activePoll;
-    });
+    this._api.get(`active-poll?room=${this._roomService.getCurrentRoom()._id}`)
+      .subscribe(res => {
+        this.activePoll = res.data;
+      });
   }
 
   getCategories(): void {
-    this._api.get('categories').subscribe(categories => this.categories = categories);
+    this._api.get('categories')
+      .subscribe(res => this.categories = res.data);
   }
 
   removePoll(id: string): void {
