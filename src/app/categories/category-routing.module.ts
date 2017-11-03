@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CategoryListComponent} from './category-list.component';
+import {CategoryListComponent} from './category-list/category-list.component';
 import {AuthenticatedGuard} from '../shared/guards/authenticated-guard.service';
-import {CategoryAddComponent} from './category-add.component';
+import {CategoryAddComponent} from './category-add/category-add.component';
 import {CategoryResolver} from './category-resolver.service';
 
 const categoryRoutes: Routes = [

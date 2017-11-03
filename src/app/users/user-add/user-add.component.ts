@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IUser} from './user';
+import {IUser} from '../user';
 import {NotificationsService} from 'angular2-notifications';
-import {ApiService} from '../shared/api.service';
+import {ApiService} from '../../shared/api.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  templateUrl: 'user-add.component.html'
+  templateUrl: './user-add.component.html'
 })
 
 export class UserAddComponent implements OnInit {

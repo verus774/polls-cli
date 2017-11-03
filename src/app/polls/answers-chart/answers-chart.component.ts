@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SocketService} from '../shared/socket.service';
-import {IPoll} from './poll';
+import {SocketService} from '../../shared/socket.service';
+import {IPoll} from '../poll';
 
 @Component({
-  templateUrl: 'answers-chart.component.html',
+  templateUrl: './answers-chart.component.html',
   selector: 'app-answers-chart'
 })
 

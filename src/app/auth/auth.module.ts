@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {AuthRoutingModule} from './auth-routing.module';
-import {SignupComponent} from './signup.component';
-import {LoginComponent} from './login.component';
-import {ProfileComponent} from './profile.component';
+import {SignupComponent} from './signup/signup.component';
+import {LoginComponent} from './login/login.component';
+import {ProfileComponent} from './profile/profile.component';
 import {ApiService} from '../shared/api.service';
 import {SharedModule} from '../shared/shared.module';
 

@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {AuthService} from './shared/auth.service';
 import {AuthenticatedGuard} from './shared/guards/authenticated-guard.service';
 import {SimpleNotificationsModule} from 'angular2-notifications';
-import {NavigationComponent} from './navigation.component';
+import {NavigationComponent} from './navigation/navigation.component';
 import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SocketService} from './shared/socket.service';

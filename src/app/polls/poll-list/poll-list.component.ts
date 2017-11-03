@@ -1,16 +1,16 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {IPoll} from './poll';
+import {IPoll} from '../poll';
 import {NotificationsService} from 'angular2-notifications';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
-import {AuthService} from '../shared/auth.service';
-import {SocketService} from '../shared/socket.service';
-import {ApiService} from '../shared/api.service';
-import {ICategory} from '../categories/category';
+import {AuthService} from '../../shared/auth.service';
+import {SocketService} from '../../shared/socket.service';
+import {ApiService} from '../../shared/api.service';
+import {ICategory} from '../../categories/category';
 import {TranslateService} from '@ngx-translate/core';
-import {RoomService} from '../rooms/room.service';
+import {RoomService} from '../../rooms/room.service';
 
 @Component({
-  templateUrl: 'poll-list.component.html',
+  templateUrl: './poll-list.component.html',
   providers: [Modal]
 })
 
@@ -70,20 +70,6 @@ export class PollListComponent implements OnInit {
 
   }
 
-  /*getPolls(): void {
-    this._api.get('polls').map((res: any) => res.data)
-      .subscribe(polls => {
-        this.polls = polls;
-
-        for (const poll of polls) {
-          if (poll.active === true) {
-            this.activePoll = poll;
-          }
-        }
-        this._socket.emit('joinRoom', this._authService.getUser()._id);
-      });
-  }*/
-
   getPolls(page = this.currentPage): void {
     this._api.get(`polls?page=${page}&limit=${this.itemsPerPage}`)
       .subscribe(res => {
@@ -94,7 +80,7 @@ export class PollListComponent implements OnInit {
   }
 
   getActivePoll(): void {
-    this._api.get(`active-poll?room=${this._roomService.getCurrentRoom()._id}`)
+    this._api.get(`active-poll?room=${this._authService.getUser()._id}`)
       .subscribe(res => {
         this.activePoll = res.data;
       });

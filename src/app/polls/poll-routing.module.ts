@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PollListComponent} from './poll-list.component';
-import {PollDetailComponent} from './poll-detail.component';
-import {PollAddComponent} from './poll-add.component';
+import {PollListComponent} from './poll-list/poll-list.component';
+import {PollDetailComponent} from './poll-detail/poll-detail.component';
+import {PollAddComponent} from './poll-add/poll-add.component';
 import {AuthenticatedGuard} from '../shared/guards/authenticated-guard.service';
 import {PollResolver} from './poll-resolver.service';
 

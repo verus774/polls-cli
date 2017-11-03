@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {ICategory} from './category';
+import {ICategory} from '../category';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
-import {ApiService} from '../shared/api.service';
+import {ApiService} from '../../shared/api.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  templateUrl: 'category-list.component.html',
+  templateUrl: './category-list.component.html',
   providers: [Modal]
 })
 

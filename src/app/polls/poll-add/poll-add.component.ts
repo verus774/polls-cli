@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
-import {ICategory} from '../categories/category';
-import {ApiService} from '../shared/api.service';
+import {ICategory} from '../../categories/category';
+import {ApiService} from '../../shared/api.service';
 import {NgForm} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
-  templateUrl: 'poll-add.component.html'
+  templateUrl: './poll-add.component.html'
 })
 
 export class PollAddComponent implements OnInit {

@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {RoomService} from './room.service';
-import {IRoom} from './room';
-import {SocketService} from '../shared/socket.service';
-import {IPoll} from '../polls/poll';
+import {RoomService} from '../room.service';
+import {IRoom} from '../room';
+import {SocketService} from '../../shared/socket.service';
+import {IPoll} from '../../polls/poll';
 import {Location} from '@angular/common';
-import {ApiService} from '../shared/api.service';
+import {ApiService} from '../../shared/api.service';
 import {NotificationsService} from 'angular2-notifications';
 import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
-  templateUrl: 'room.component.html'
+  templateUrl: './room.component.html'
 })
 
 export class RoomComponent implements OnInit {

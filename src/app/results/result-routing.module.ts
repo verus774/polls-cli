@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticatedGuard} from '../shared/guards/authenticated-guard.service';
-import {ResultListComponent} from './result-list.component';
-import {ResultDetailComponent} from './result-detail.component';
+import {ResultListComponent} from './result-list/result-list.component';
+import {ResultDetailComponent} from './result-detail/result-detail.component';
 import {ResultResolver} from './result-resolver.service';
 
 const routes: Routes = [

@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {IResult} from './result';
+import {IResult} from '../result';
 import {GroupByPipe} from 'ngx-pipes/src/app/pipes/array/group-by';
 import {PairsPipe} from 'ngx-pipes/src/app/pipes/object/pairs';
 
 
 @Component({
-  templateUrl: 'result-detail.component.html',
+  templateUrl: './result-detail.component.html',
   providers: [
     GroupByPipe,
     PairsPipe

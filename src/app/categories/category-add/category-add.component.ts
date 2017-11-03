@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
-import {ApiService} from '../shared/api.service';
-import {ICategory} from './category';
+import {ApiService} from '../../shared/api.service';
+import {ICategory} from '../category';
 import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
-  templateUrl: 'category-add.component.html'
+  templateUrl: './category-add.component.html'
 })
 
 export class CategoryAddComponent implements OnInit {

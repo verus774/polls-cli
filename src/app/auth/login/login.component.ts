@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../shared/auth.service';
+import {AuthService} from '../../shared/auth.service';
 import {Router} from '@angular/router';
-import {ApiService} from '../shared/api.service';
-import {environment} from '../../environments/environment';
+import {ApiService} from '../../shared/api.service';
+import {environment} from '../../../environments/environment';
 import {NotificationsService} from 'angular2-notifications';
 import {NgForm} from '@angular/forms';
 
 
 @Component({
-  templateUrl: 'login.component.html'
+  templateUrl: './login.component.html'
 })
 
 export class LoginComponent implements OnInit {

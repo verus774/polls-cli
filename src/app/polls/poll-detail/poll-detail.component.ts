@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {IPoll} from './poll';
+import {IPoll} from '../poll';
 
 @Component({
-  templateUrl: 'poll-detail.component.html'
+  templateUrl: './poll-detail.component.html'
 })
 
 export class PollDetailComponent implements OnInit {

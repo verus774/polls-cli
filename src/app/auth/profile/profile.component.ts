@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../shared/api.service';
-import {AuthService} from '../shared/auth.service';
+import {ApiService} from '../../shared/api.service';
+import {AuthService} from '../../shared/auth.service';
 import {NotificationsService} from 'angular2-notifications';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  templateUrl: 'profile.component.html'
+  templateUrl: './profile.component.html'
 })
 
 export class ProfileComponent implements OnInit {

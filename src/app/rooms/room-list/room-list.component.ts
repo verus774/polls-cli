@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {RoomService} from './room.service';
-import {IRoom} from './room';
+import {RoomService} from '../room.service';
+import {IRoom} from '../room';
 import {Router} from '@angular/router';
-import {SocketService} from '../shared/socket.service';
-import {ApiService} from '../shared/api.service';
+import {SocketService} from '../../shared/socket.service';
+import {ApiService} from '../../shared/api.service';
 
 @Component({
-  templateUrl: 'room-list.component.html'
+  templateUrl: './room-list.component.html'
 })
 export class RoomListComponent implements OnInit {
   rooms: IRoom[];

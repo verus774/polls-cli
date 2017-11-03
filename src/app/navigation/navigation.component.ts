@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {AuthService} from './shared/auth.service';
+import {AuthService} from '../shared/auth.service';
 import {TranslateService} from '@ngx-translate/core';
-import {LocalSettingsService} from './shared/local-settings.service';
+import {LocalSettingsService} from '../shared/local-settings.service';
 
 @Component({
   selector: 'app-navigation',
-  templateUrl: 'navigation.component.html'
+  templateUrl: './navigation.component.html'
 })
 export class NavigationComponent {
   constructor(public authService: AuthService,

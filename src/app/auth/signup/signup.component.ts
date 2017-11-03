@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../shared/auth.service';
+import {AuthService} from '../../shared/auth.service';
 import {Router} from '@angular/router';
 import {NotificationsService} from 'angular2-notifications';
-import {ApiService} from '../shared/api.service';
-import {environment} from '../../environments/environment';
+import {ApiService} from '../../shared/api.service';
+import {environment} from '../../../environments/environment';
 import {NgForm} from '@angular/forms';
 
 
 @Component({
-  templateUrl: 'signup.component.html'
+  templateUrl: './signup.component.html'
 })
 
 export class SignupComponent implements OnInit {

@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
-import {IResult} from './result';
-import {ApiService} from '../shared/api.service';
+import {IResult} from '../result';
+import {ApiService} from '../../shared/api.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  templateUrl: 'result-list.component.html',
+  templateUrl: './result-list.component.html',
   providers: [Modal]
 })
 
