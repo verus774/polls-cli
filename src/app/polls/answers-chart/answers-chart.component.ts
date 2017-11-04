@@ -67,7 +67,7 @@ export class AnswersChartComponent implements OnInit {
         if (answer.question === question._id) {
           answerText = question.choices[answer.answer];
           questionText = question.text;
-          questionId = question._id
+          questionId = question._id;
         }
       }
 
