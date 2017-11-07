@@ -14,12 +14,12 @@
       <div class="form-group">
         <label for="category">{{'POLL_LIST.CAT_FILTER' | translate}}</label>
 
-        <select class="form-control" id="category" name="category" [(ngModel)]="currCategoryId">
+        <select class="form-control" id="category" [ngModel] (change)="onCategorySelectChange($event.target.value)">
           <option *ngFor="let category of categories | orderBy: 'title'" [ngValue]="category._id">{{category.title}}
           </option>
         </select>
 
-        <button class="btn btn-info" *ngIf="currCategoryId" (click)="resetCategoryFilter()">{{'BUTTONS.RESET' |
+        <button class="btn btn-info" *ngIf="useCategoryFilter" (click)="resetCategoryFilter()">{{'BUTTONS.RESET' |
           translate}}
         </button>
 
@@ -58,7 +58,6 @@
         <tbody>
         <tr *ngFor="let poll of polls
           | orderBy: 'title'
-          | filterBy: ['category._id']: currCategoryId
           | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
             [ngClass]="{'list-group-item-success': poll.active}"
         >

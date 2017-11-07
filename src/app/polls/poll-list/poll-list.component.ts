@@ -17,7 +17,7 @@ import {RoomService} from '../../rooms/room.service';
 export class PollListComponent implements OnInit {
   polls: IPoll[];
   categories: ICategory[];
-  currCategoryId: string;
+  useCategoryFilter = false;
   activePoll: IPoll;
 
   currentPage = 1;
@@ -70,13 +70,18 @@ export class PollListComponent implements OnInit {
 
   }
 
-  getPolls(page = this.currentPage): void {
-    this._api.get(`polls?page=${page}&limit=${this.itemsPerPage}`)
+  getPolls(page = this.currentPage, categoryId = ''): void {
+    this._api.get(`polls?page=${page}&limit=${this.itemsPerPage}&category=${categoryId}`)
       .subscribe(res => {
-        this.polls = res.data;
-        this.totalItems = res.meta.paging.total;
-        this.currentPage = page;
-      });
+          this.polls = res.data;
+          this.totalItems = res.meta.paging.total;
+          this.currentPage = page;
+        },
+        _ => {
+          this.polls = [];
+          this.totalItems = 0;
+        }
+      );
   }
 
   getActivePoll(): void {
@@ -127,7 +132,13 @@ export class PollListComponent implements OnInit {
   }
 
   resetCategoryFilter(): void {
-    this.currCategoryId = null;
+    this.useCategoryFilter = false;
+    this.getPolls(1);
+  }
+
+  onCategorySelectChange(categoryId) {
+    this.useCategoryFilter = true;
+    this.getPolls(1, categoryId.slice(3));
   }
 
 }
