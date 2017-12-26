@@ -9,7 +9,7 @@ import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {AnswersChartComponent} from './answers-chart/answers-chart.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -17,13 +17,13 @@ import {AnswersChartComponent} from './answers-chart/answers-chart.component';
     FormsModule,
     NgPipesModule,
     PollRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxChartsModule
   ],
   declarations: [
     PollListComponent,
     PollDetailComponent,
-    PollAddComponent,
-    AnswersChartComponent
+    PollAddComponent
   ],
   providers: [
     PollResolver,

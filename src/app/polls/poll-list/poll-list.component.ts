@@ -8,10 +8,14 @@ import {ApiService} from '../../shared/api.service';
 import {ICategory} from '../../categories/category';
 import {TranslateService} from '@ngx-translate/core';
 import {RoomService} from '../../rooms/room.service';
+import {GroupByPipe} from 'ngx-pipes';
 
 @Component({
   templateUrl: './poll-list.component.html',
-  providers: [Modal]
+  providers: [
+    Modal,
+    GroupByPipe
+  ]
 })
 
 export class PollListComponent implements OnInit {
@@ -19,6 +23,7 @@ export class PollListComponent implements OnInit {
   categories: ICategory[];
   useCategoryFilter = false;
   activePoll: IPoll;
+  chartData: any[];
 
   currentPage = 1;
   itemsPerPage = 10;
@@ -31,10 +36,13 @@ export class PollListComponent implements OnInit {
               private _authService: AuthService,
               private _roomService: RoomService,
               private _translate: TranslateService,
+              private _groupByPipe: GroupByPipe,
               private _socket: SocketService) {
   }
 
   ngOnInit(): void {
+    let answers: any[] = [];
+
     this.getCategories();
     this.getPolls();
     this.getActivePoll();
@@ -68,6 +76,10 @@ export class PollListComponent implements OnInit {
       );
     });
 
+    this._socket.on('answers').subscribe((data) => {
+      answers = answers.concat(data);
+      this.chartData = this.answersToChartData(answers);
+    });
   }
 
   getPolls(page = this.currentPage, categoryId = ''): void {
@@ -129,6 +141,7 @@ export class PollListComponent implements OnInit {
 
   stopPoll(id: string): void {
     this._socket.emit('stopPoll', {access_token: this._authService.getToken(), id: id});
+    this.chartData = [];
   }
 
   resetCategoryFilter(): void {
@@ -139,6 +152,55 @@ export class PollListComponent implements OnInit {
   onCategorySelectChange(categoryId) {
     this.useCategoryFilter = true;
     this.getPolls(1, categoryId.slice(3));
+  }
+
+  answersToChartData(answers: any[]): any[] {
+    const groupedAnswers = this._groupByPipe.transform(answers, ['question', 'answer']);
+    const result: any[] = [];
+
+    for (const title in groupedAnswers) {
+      if (groupedAnswers.hasOwnProperty(title)) {
+        const arrayOfStrings = title.split('|');
+
+        const question = arrayOfStrings[0];
+        const choice = arrayOfStrings[1];
+        const count = groupedAnswers[title].length;
+
+        const obj = {
+          title: question,
+          data: [{
+            name: choice,
+            value: count
+          }]
+        };
+
+        result.push(obj);
+      }
+    }
+
+    const groupByTitle = this._groupByPipe.transform(result, ['title']);
+    const result2: any[] = [];
+
+    for (const title in groupByTitle) {
+      if (groupByTitle.hasOwnProperty(title)) {
+        const obj = {
+          title: title,
+          data: []
+        };
+
+        for (const el of groupByTitle[title]) {
+          obj.data = obj.data.concat(el.data);
+        }
+
+        result2.push(obj);
+      }
+    }
+
+    return result2;
+  }
+
+  trackByFn(index, item) {
+    return item.name;
   }
 
 }

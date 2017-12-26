@@ -4,6 +4,34 @@
       <h3>{{'POLL_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
 
+
+    <ng-template #noPolls><h4>{{'POLL_LIST.NO_ACTIVE_POLLS' | translate}}</h4></ng-template>
+    <div *ngIf="activePoll; else noPolls">
+      <br><br>
+      <h4 class="text-center">{{'POLL_LIST.RESULT_FOR' | translate}} {{activePoll.title}}</h4>
+
+      <button class="btn btn-primary" (click)="stopPoll(activePoll._id)">{{'POLL_LIST.STOP_POLL_BTN' | translate}}
+      </button>
+      <br><br>
+
+      <div class="row" *ngFor="let item of chartData; trackBy: trackByFn">
+        <div class="col-md-12">
+          <h5 class="text-center">{{ item.title }}</h5>
+          <ngx-charts-pie-chart
+            [view]="[400, 400]"
+            [results]="item.data"
+            [labels]="true"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+
+      <br><br>
+      <button class="btn btn-primary" (click)="stopPoll(activePoll._id)">{{'POLL_LIST.STOP_POLL_BTN' | translate}}
+      </button>
+      <br><br>
+    </div>
+
     <a [routerLink]="['/add-poll']" class="btn btn-success pull-right">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
@@ -30,24 +58,9 @@
 </div>
 
 <div class="row" *ngIf="polls">
-  <div class="col-md-3">
-    <hr>
+  <div class="col-md-12">
 
-    <div *ngIf="activePoll; else noPolls">
-      <h5>{{'POLL_LIST.RESULT_FOR' | translate}} {{activePoll.title}}</h5>
-      <button class="btn btn-primary" (click)="stopPoll(activePoll._id)">{{'POLL_LIST.STOP_POLL_BTN' | translate}}
-      </button>
-
-      <app-answers-chart [activePoll]="activePoll"></app-answers-chart>
-
-    </div>
-
-    <ng-template #noPolls><h4>{{'POLL_LIST.NO_ACTIVE_POLLS' | translate}}</h4></ng-template>
-
-  </div>
-  <div class="col-md-9">
-
-    <div class="table-responsive">
+    <div>
       <table class="table table-hover">
         <thead>
         <tr>
