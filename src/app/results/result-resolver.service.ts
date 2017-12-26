@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {IResult} from './result';
 import {ApiService} from '../shared/api.service';
 

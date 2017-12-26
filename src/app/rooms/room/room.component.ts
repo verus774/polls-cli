@@ -7,6 +7,7 @@ import {Location} from '@angular/common';
 import {ApiService} from '../../shared/api.service';
 import {NotificationsService} from 'angular2-notifications';
 import {TranslateService} from '@ngx-translate/core';
+import 'rxjs/add/operator/map';
 import {IAnswer} from '../answer';
 
 
@@ -58,11 +59,12 @@ export class RoomComponent implements OnInit {
     answers = null;
     this.activePoll = null;
 
-    this._location.back();
     this._notificationsService.success(
       this._translate.instant('ROOM.NOTIFICATION_SUBMITTED_TITLE'),
       this._translate.instant('ROOM.NOTIFICATION_SUBMITTED')
     );
+
+    this.onBack();
   }
 
 }

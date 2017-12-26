@@ -4,6 +4,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {ICategory} from '../../categories/category';
 import {ApiService} from '../../shared/api.service';
 import {NgForm} from '@angular/forms';
+import 'rxjs/add/operator/map';
 import {TranslateService} from '@ngx-translate/core';
 
 

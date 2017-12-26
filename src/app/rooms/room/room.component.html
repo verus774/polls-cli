@@ -10,7 +10,7 @@
 
     <div *ngIf="activePoll">
       <h4>{{ activePoll.title }}</h4>
-      <form role="form" name="answerForm" (submit)="onSubmit()">
+      <form role="form" name="answerForm" (submit)="onSubmit($event)">
         <div class="panel panel-primary" *ngFor="let question of activePoll.questions">
           <div class="panel-heading">
             <h3 class="panel-title">

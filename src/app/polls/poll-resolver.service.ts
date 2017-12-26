@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {IPoll} from './poll';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {ApiService} from '../shared/api.service';
 
 @Injectable()

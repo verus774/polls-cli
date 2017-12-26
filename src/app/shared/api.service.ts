@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {AuthService} from './auth.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 
 @Injectable()
@@ -46,10 +45,10 @@ export class ApiService {
         }
         return res;
       })
-      .catch((res: Response) => this.onRequestError(res));
+      .catch((err: HttpErrorResponse) => this.onRequestError(err));
   }
 
-  onRequestError(error: Response) {
+  onRequestError(error: HttpErrorResponse) {
     return Observable.throw(error);
   }
 
