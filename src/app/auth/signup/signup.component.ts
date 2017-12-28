@@ -29,10 +29,14 @@ export class SignupComponent implements OnInit {
   onSubmit(form: NgForm): void {
     this._api.request(`${this._authUrl}/signup`, 'POST', form.value)
       .subscribe(
-        res => this._router.navigate(['/polls']),
+        () => this._router.navigate(['/polls']),
         err => {
+          if (err.status === 409) {
+            this._notificationsService.error('Error', 'Username exists');
+          } else {
+            this._notificationsService.error('Error', 'Signup fail');
+          }
           form.reset();
-          this._notificationsService.error('Error', 'Signup fail');
         }
       );
   }
