@@ -10,7 +10,7 @@
 
     <div *ngIf="activePoll">
       <h4>{{ activePoll.title }}</h4>
-      <form role="form" name="answerForm" (submit)="onSubmit($event)">
+      <form role="form" (submit)="onSubmit($event)" #answerForm="ngForm">
         <div class="panel panel-primary" *ngFor="let question of activePoll.questions">
           <div class="panel-heading">
             <h3 class="panel-title">
@@ -25,7 +25,8 @@
                     <input type="radio"
                            name="{{question._id}}"
                            value="{{choice}}"
-                           [(ngModel)]="question.answer">
+                           [(ngModel)]="question.answer"
+                           required>
                     {{ choice }}
                   </label>
                 </div>
@@ -34,7 +35,7 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn btn-success" [disabled]="answerForm.invalid">
           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{'BUTTONS.SUBMIT' | translate}}
         </button>
         <br><br>
