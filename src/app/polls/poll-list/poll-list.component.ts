@@ -28,6 +28,8 @@ export class PollListComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 10;
   totalItems = 0;
+  roomUrl: string;
+  showQR = false;
 
   constructor(private _api: ApiService,
               public modal: Modal,
@@ -46,6 +48,8 @@ export class PollListComponent implements OnInit {
     this.getCategories();
     this.getPolls();
     this.getActivePoll();
+
+    this.roomUrl = this._roomService.getCurrentRoomUrl();
 
     this._socket.emit('joinRoom', this._authService.getUser()._id);
 

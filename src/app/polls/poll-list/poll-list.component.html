@@ -4,6 +4,10 @@
       <h3>{{'POLL_LIST.PAGE_HEADER' | translate}}</h3>
     </div>
 
+    <button class="btn btn-info" (click)="showQR = !showQR">QR</button>
+    <div>
+      <qr-code *ngIf="showQR" [value]="roomUrl" [size]="300"></qr-code>
+    </div>
 
     <ng-template #noPolls><h4>{{'POLL_LIST.NO_ACTIVE_POLLS' | translate}}</h4></ng-template>
     <div *ngIf="activePoll; else noPolls">
@@ -31,6 +35,7 @@
       </button>
       <br><br>
     </div>
+
 
     <a [routerLink]="['/add-poll']" class="btn btn-success pull-right">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

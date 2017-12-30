@@ -10,6 +10,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {QRCodeModule} from 'angular2-qrcode';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     NgPipesModule,
     PollRoutingModule,
     NgxPaginationModule,
-    NgxChartsModule
+    NgxChartsModule,
+    QRCodeModule
   ],
   declarations: [
     PollListComponent,

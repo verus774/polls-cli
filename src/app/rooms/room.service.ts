@@ -10,4 +10,8 @@ export class RoomService {
   getCurrentRoom(): IRoom {
     return JSON.parse(localStorage.getItem('currentRoom'));
   }
+
+  getCurrentRoomUrl(): string {
+    return `${window.location.origin}/rooms/${this.getCurrentRoom()._id}`;
+  }
 }
