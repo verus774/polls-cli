@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {RoomRoutingModule} from './room-routing.module';
 import {RoomService} from './room.service';
 import {RoomListComponent} from './room-list/room-list.component';
-import {RoomComponent} from './room/room.component';
+import {RoomDetailComponent} from './room-detail/room-detail.component';
 import {ApiService} from '../shared/api.service';
 import {NgPipesModule} from 'ngx-pipes';
 import {SharedModule} from '../shared/shared.module';
@@ -19,7 +19,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   declarations: [
     RoomListComponent,
-    RoomComponent
+    RoomDetailComponent
   ],
   providers: [
     RoomService,

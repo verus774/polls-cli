@@ -35,10 +35,4 @@ export class RoomListComponent implements OnInit {
       });
   }
 
-  joinRoom(room: IRoom): void {
-    this._socket.emit('joinRoom', room._id);
-    this._roomService.setCurrentRoom(room);
-    this._router.navigate(['/rooms', room._id]);
-  }
-
 }

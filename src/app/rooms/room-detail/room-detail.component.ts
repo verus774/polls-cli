@@ -9,13 +9,14 @@ import {NotificationsService} from 'angular2-notifications';
 import {TranslateService} from '@ngx-translate/core';
 import 'rxjs/add/operator/map';
 import {IAnswer} from '../answer';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
-  templateUrl: './room.component.html'
+  templateUrl: './room-detail.component.html'
 })
 
-export class RoomComponent implements OnInit {
+export class RoomDetailComponent implements OnInit {
   currentRoom: IRoom;
   activePoll: IPoll;
 
@@ -24,11 +25,14 @@ export class RoomComponent implements OnInit {
               private _socket: SocketService,
               private _api: ApiService,
               private _translate: TranslateService,
+              private _route: ActivatedRoute,
               private _notificationsService: NotificationsService) {
   }
 
   ngOnInit(): void {
-    this.currentRoom = this._roomService.getCurrentRoom();
+    const roomId = this._route.snapshot.paramMap.get('id');
+    this.currentRoom = {_id: roomId, name: ''};
+    this._socket.emit('joinRoom', roomId);
 
     this._api.get(`active-poll?room=${this.currentRoom._id}`).map((res: any) => res.data)
       .subscribe(activePoll => this.activePoll = activePoll);

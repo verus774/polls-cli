@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
 import {IRoom} from './room';
+import {AuthService} from '../shared/auth.service';
 
 @Injectable()
 export class RoomService {
-  setCurrentRoom(room: IRoom): void {
-    localStorage.setItem('currentRoom', JSON.stringify(room));
+  constructor(private _authService: AuthService) {
   }
 
   getCurrentRoom(): IRoom {
-    return JSON.parse(localStorage.getItem('currentRoom'));
+    const user = this._authService.getUser();
+    return {
+      _id: user._id,
+      name: user.name
+    };
   }
 
   getCurrentRoomUrl(): string {
