@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Modal} from 'angular2-modal/plugins/bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {Modal} from 'ngx-modialog/plugins/bootstrap';
 import {NotificationsService} from 'angular2-notifications';
 import {ApiService} from '../../shared/api.service';
 import {IUser} from '../user';
@@ -19,7 +19,6 @@ export class UserListComponent implements OnInit {
 
   constructor(private _api: ApiService,
               public modal: Modal,
-              public vcRef: ViewContainerRef,
               private _translate: TranslateService,
               private _notificationsService: NotificationsService) {
   }
@@ -44,23 +43,21 @@ export class UserListComponent implements OnInit {
       .title(this._translate.instant('USER_LIST.MODAL_DELETE_TITLE'))
       .body(this._translate.instant('USER_LIST.MODAL_DELETE_BODY'))
       .open()
-      .then((res) => {
-        res.result
-          .then(() => {
-            this._api.delete(`users/${id}`).subscribe(
-              () => {
-                this._notificationsService.success(
-                  this._translate.instant('USER_LIST.NOTIFICATION_TITLE'),
-                  this._translate.instant('USER_LIST.NOTIFICATION_DELETED')
-                );
-                this.getUsers();
-              },
-              () => this._notificationsService.error(
-                this._translate.instant('NOTIFICATION_ERR.TITLE'),
-                this._translate.instant('NOTIFICATION_ERR.CONTENT')
-              )
+      .result
+      .then(() => {
+        this._api.delete(`users/${id}`).subscribe(
+          () => {
+            this._notificationsService.success(
+              this._translate.instant('USER_LIST.NOTIFICATION_TITLE'),
+              this._translate.instant('USER_LIST.NOTIFICATION_DELETED')
             );
-          });
+            this.getUsers();
+          },
+          () => this._notificationsService.error(
+            this._translate.instant('NOTIFICATION_ERR.TITLE'),
+            this._translate.instant('NOTIFICATION_ERR.CONTENT')
+          )
+        );
       });
   }
 

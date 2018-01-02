@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IPoll} from '../poll';
 import {NotificationsService} from 'angular2-notifications';
-import {Modal} from 'angular2-modal/plugins/bootstrap';
+import {Modal} from 'ngx-modialog/plugins/bootstrap';
 import {AuthService} from '../../shared/auth.service';
 import {SocketService} from '../../shared/socket.service';
 import {ApiService} from '../../shared/api.service';
@@ -13,7 +13,6 @@ import {GroupByPipe} from 'ngx-pipes';
 @Component({
   templateUrl: './poll-list.component.html',
   providers: [
-    Modal,
     GroupByPipe
   ]
 })
@@ -33,7 +32,6 @@ export class PollListComponent implements OnInit {
 
   constructor(private _api: ApiService,
               public modal: Modal,
-              public vcRef: ViewContainerRef,
               private _notificationsService: NotificationsService,
               private _authService: AuthService,
               private _roomService: RoomService,
@@ -119,23 +117,21 @@ export class PollListComponent implements OnInit {
       .title(this._translate.instant('POLL_LIST.MODAL_DELETE_TITLE'))
       .body(this._translate.instant('POLL_LIST.MODAL_DELETE_BODY'))
       .open()
-      .then((res) => {
-        res.result
-          .then(() => {
-            this._api.delete(`polls/${id}`).subscribe(
-              () => {
-                this._notificationsService.success(
-                  this._translate.instant('POLL_LIST.NOTIFICATION_TITLE'),
-                  this._translate.instant('POLL_LIST.NOTIFICATION_DELETED')
-                );
-                this.getPolls();
-              },
-              () => this._notificationsService.error(
-                this._translate.instant('NOTIFICATION_ERR.TITLE'),
-                this._translate.instant('NOTIFICATION_ERR.CONTENT')
-              )
+      .result
+      .then(() => {
+        this._api.delete(`polls/${id}`).subscribe(
+          () => {
+            this._notificationsService.success(
+              this._translate.instant('POLL_LIST.NOTIFICATION_TITLE'),
+              this._translate.instant('POLL_LIST.NOTIFICATION_DELETED')
             );
-          });
+            this.getPolls();
+          },
+          () => this._notificationsService.error(
+            this._translate.instant('NOTIFICATION_ERR.TITLE'),
+            this._translate.instant('NOTIFICATION_ERR.CONTENT')
+          )
+        );
       });
   }
 
