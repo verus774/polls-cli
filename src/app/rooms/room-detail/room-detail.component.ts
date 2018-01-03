@@ -30,9 +30,8 @@ export class RoomDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const roomId = this._route.snapshot.paramMap.get('id');
-    this.currentRoom = {_id: roomId, name: ''};
-    this._socket.emit('joinRoom', roomId);
+    this.currentRoom = this._route.snapshot.data['room'];
+    this._socket.emit('joinRoom', this.currentRoom._id);
 
     this._api.get(`active-poll?room=${this.currentRoom._id}`).map((res: any) => res.data)
       .subscribe(activePoll => this.activePoll = activePoll);
