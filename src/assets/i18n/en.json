@@ -7,6 +7,9 @@
     },
     "LOGOUT": "Logout"
   },
+  "NOT_FOUND": {
+    "PAGE_HEADER": "Page not found"
+  },
   "AUTH": {
     "USERNAME": "Username",
     "NAME": "Name",

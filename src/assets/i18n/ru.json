@@ -7,6 +7,9 @@
     },
     "LOGOUT": "Выйти"
   },
+  "NOT_FOUND": {
+    "PAGE_HEADER": "Страница не найдена"
+  },
   "AUTH": {
     "USERNAME": "Логин",
     "NAME": "Имя",
