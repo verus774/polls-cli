@@ -22,8 +22,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(req).do(res => {
       if (res instanceof HttpResponse) {
-        if (res.body.data && res.body.data.token) {
-          this._authService.setToken(res.body.data.token);
+        if (res.body.data && res.body.data.accessToken) {
+          this._authService.setToken(res.body.data.accessToken);
         }
       }
     });
