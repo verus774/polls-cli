@@ -136,11 +136,11 @@ export class PollListComponent implements OnInit {
   }
 
   startPoll(id: string): void {
-    this._socket.emit('startPoll', {access_token: this._authService.getToken(), id: id});
+    this._socket.emit('startPoll', {access_token: this._authService.getAccessToken(), id: id});
   }
 
   stopPoll(id: string): void {
-    this._socket.emit('stopPoll', {access_token: this._authService.getToken(), id: id});
+    this._socket.emit('stopPoll', {access_token: this._authService.getAccessToken(), id: id});
     this.chartData = [];
   }
 

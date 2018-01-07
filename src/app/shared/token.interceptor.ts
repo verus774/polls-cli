@@ -12,7 +12,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone();
 
-    const token = this._authService.getToken();
+    const token = this._authService.getAccessToken();
     if (token) {
       req = req.clone({
         headers:
@@ -22,8 +22,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(req).do(res => {
       if (res instanceof HttpResponse) {
-        if (res.body.data && res.body.data.accessToken) {
-          this._authService.setToken(res.body.data.accessToken);
+        if (res.body.data && (res.body.data.accessToken || res.body.data.refreshToken)) {
+          this._authService.setAccessToken(res.body.data.accessToken);
+          this._authService.setRefreshToken(res.body.data.refreshToken);
         }
       }
     });
