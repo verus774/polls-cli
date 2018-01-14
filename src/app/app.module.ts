@@ -23,8 +23,9 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {LocalSettingsService} from './shared/local-settings.service';
-import {TokenInterceptor} from './shared/token.interceptor';
+import {TokenInterceptor} from './shared/interceptors/token.interceptor';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import {RefreshTokenInterceptor} from './shared/interceptors/refresh-token.interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,6 +66,11 @@ export function createTranslateLoader(http: HttpClient) {
     AdminGuard,
     SocketService,
     LocalSettingsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RefreshTokenInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

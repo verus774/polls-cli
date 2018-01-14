@@ -4,7 +4,6 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {AuthService} from './auth.service';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 
@@ -12,7 +11,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 export class ApiService {
   private _apiUrl = environment.apiUrl;
 
-  constructor(private _http: HttpClient, private _authService: AuthService) {
+  constructor(private _http: HttpClient) {
   }
 
   get (url: string) {

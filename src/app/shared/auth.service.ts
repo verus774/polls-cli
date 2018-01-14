@@ -1,18 +1,19 @@
-import {Injectable} from '@angular/core';
-import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
+import {Injectable, Injector} from '@angular/core';
+import {JwtHelper} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
 import {IUser} from '../users/user';
+import {ApiService} from './api.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  private _authUrl = environment.authUrl;
   private _accessStorageKey = 'access_token';
   private _refreshStorageKey = 'refresh_token';
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private injector: Injector) {
   }
 
   setAccessToken(token: string): void {
@@ -38,7 +39,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return tokenNotExpired(null, this.getAccessToken());
+    return !!this.getAccessToken();
   }
 
   getUser(): IUser {
@@ -48,4 +49,11 @@ export class AuthService {
   isAdmin(): boolean {
     return this.isLoggedIn() && this.getUser().role === 'admin';
   }
+
+  refreshToken(): Observable<any> {
+    const api = this.injector.get(ApiService);
+    const refreshToken = this.getRefreshToken();
+    return api.request(`${environment.authUrl}/refresh-token`, 'POST', {refreshToken});
+  }
+
 }
