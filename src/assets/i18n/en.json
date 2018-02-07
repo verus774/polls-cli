@@ -28,6 +28,14 @@
   "SIGNUP": {
     "PAGE_HEADER": "Signup"
   },
+  "CONTACT": {
+    "PAGE_HEADER": "Contact us",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "TEXT": "Text",
+    "NOTIFICATION_TITLE": "Success",
+    "NOTIFICATION_SENT": "Message sent"
+  },
   "CAT_ADD": {
     "PAGE_HEADER_ADD": "Add category",
     "PAGE_HEADER_UPD": "Update category",

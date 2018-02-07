@@ -43,6 +43,8 @@
           </ul>
         </li>
 
+        <li><a routerLink="/contact-us"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+
         <li *ngIf="authService.isLoggedIn()">
           <a href="#" (click)="logout($event)">
             {{'NAV.LOGOUT' | translate}} [{{authService.getUser().username}}]

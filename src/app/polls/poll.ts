@@ -1,4 +1,5 @@
 import {ICategory} from '../categories/category';
+
 export interface IPoll {
   _id?: string;
   title: string;

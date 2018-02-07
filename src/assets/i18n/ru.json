@@ -28,6 +28,14 @@
   "SIGNUP": {
     "PAGE_HEADER": "Регистрация"
   },
+  "CONTACT": {
+    "PAGE_HEADER": "Связаться с нами",
+    "NAME": "Имя",
+    "EMAIL": "Email",
+    "TEXT": "Текст",
+    "NOTIFICATION_TITLE": "Успешно",
+    "NOTIFICATION_SENT": "Сообщение отправлено"
+  },
   "CAT_ADD": {
     "PAGE_HEADER_ADD": "Добавить категорию",
     "PAGE_HEADER_UPD": "Обновить категорию",
